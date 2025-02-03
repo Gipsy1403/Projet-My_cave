@@ -14,6 +14,30 @@
         {% endblock %}
     </head>
     <body>
+    <header>
+			<nav>
+				<p>logo</p>
+				<div class="menu_dropdown">
+					<i class="fa-solid fa-bars"></i>
+					<ul>
+						<li><a href={{path('home')}}>Accueil</a></li>
+						<li><a href={{path('galery')}}>Mes Caves</a></li>
+						<li><a href={{path('contact')}}>Explorer</a></li>
+						{% if not is_granted('ROLE_USER') %}
+							<li><a href={{path('app_login')}}>Se connecter</a></li>
+							<li><a href={{path('app_register')}}>S'inscrire</a></li>
+							{% else %}
+								<li><a href={{path('add_umbrella')}}>Ajouter</a></li>
+								<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
+						{% endif %}
+						{% if not is_granted('ROLE_ADMIN') %}
+							{% else %}
+								<li><a href={{path('admin')}}>Administrateur</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</nav>
+		</header>
         {% block body %}{% endblock %}
     </body>
 </html>

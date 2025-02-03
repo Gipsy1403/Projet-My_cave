@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\BottleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BottleRepository;
+use Doctrine\Common\Collections\Collection;
+use symfony\component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: BottleRepository::class)]
 class Bottle
 {
@@ -24,7 +28,17 @@ class Bottle
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
+// ajout images
+    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?DateTimeImmutable $updatedAt = null;
+    
+// fin images
     #[ORM\ManyToOne(inversedBy: 'bottles')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
@@ -194,5 +208,29 @@ class Bottle
         $this->grapes->removeElement($grape);
 
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null):void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 }
