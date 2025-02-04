@@ -1,0 +1,61 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+nav{
+	ul{
+		list-style: none;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+	li{
+		display: flex;
+		margin: 0 1.5rem;
+	}
+	a{
+		color: v.$first-color;
+		font-weight: bold;
+		font-size: 1.2rem;
+		margin: 0 1.5rem;
+		&:hover{
+			color: v.$third-color;
+			font-size: 1.5em;
+			
+		}
+	}
+ }
+ .fa-bars{
+	display: none;
+	font-size: 1.5em;
+
+ }
+
+//  bannière********************************
+
+.banner {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	background: linear-gradient(0deg, rgba(62,0,24,1) 20%, rgba(136,92,126,0) 60%);
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url('/assets/imglog/eric-cook-D9WH_vlxicA-unsplash.jpg');
+		background-position: center;
+		background-size: cover;
+		opacity: 0.5;
+		z-index: -1;
+	 }
+	h1{
+		color: v.$first-color;
+		text-align: center;
+		
+	}
+}
+

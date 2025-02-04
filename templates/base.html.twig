@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+</html>
 <html>
     <head>
         <meta charset="UTF-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,30 +16,53 @@
         {% endblock %}
     </head>
     <body>
-    <header>
+    <header id="header">
 			<nav>
-				<p>logo</p>
+			<a href={{path ("home")}}><img src="{{ asset('imglog/logo.png') }}" alt="logo"></a>
 				<div class="menu_dropdown">
-					<i class="fa-solid fa-bars"></i>
 					<ul>
 						<li><a href={{path('home')}}>Accueil</a></li>
-						<li><a href={{path('galery')}}>Mes Caves</a></li>
-						<li><a href={{path('contact')}}>Explorer</a></li>
+						<li><a href="">Mes Caves</a></li>
+						{# <li><a href={{path('explore')}}>Explorer</a></li> #}
 						{% if not is_granted('ROLE_USER') %}
 							<li><a href={{path('app_login')}}>Se connecter</a></li>
 							<li><a href={{path('app_register')}}>S'inscrire</a></li>
 							{% else %}
-								<li><a href={{path('add_umbrella')}}>Ajouter</a></li>
+								<li><a href="">Ajouter</a></li>
 								<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
 						{% endif %}
 						{% if not is_granted('ROLE_ADMIN') %}
 							{% else %}
-								<li><a href={{path('admin')}}>Administrateur</a></li>
+								<li><a href="">Administrateur</a></li>
 						{% endif %}
 					</ul>
+					<i class="fa-solid fa-bars"></i>
 				</div>
 			</nav>
 		</header>
-        {% block body %}{% endblock %}
+        {% block banner %}
+	   	<div class="banner">
+			<h1>Gérer votre Cave avec simplicité !</h1>
+		</div>
+	   {% endblock %}
+        
+	   {% block body %}{% endblock %}
+
+	   {% block footer %}
+	   	<footer>
+
+			<div class="footbar">
+				<a href={{path ("home")}}>Accueil</a>
+				<a href="">Mes Caves</a>
+				<a href="">Explorer</a>
+			</div>
+			<a href={{path ("home")}}><img src="{{ asset('imglog/logo-large-white.png') }}" alt="logo"></a>
+			<div class="about">
+				<p>A propos de My Cave</p>
+				<a href="">Mentions légales</a>
+			</div>
+			<a href="">Nous contacter</a>
+		</footer>
+	   {% endblock %}
     </body>
 </html>

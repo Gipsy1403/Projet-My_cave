@@ -1,4 +1,4 @@
-import './bootstrap.js';
+// import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -7,6 +7,6 @@ import './bootstrap.js';
  */
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@fortawesome/fontawesome-free/js/all.js';
-import './styles/app.css';
+import './styles/app.scss';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

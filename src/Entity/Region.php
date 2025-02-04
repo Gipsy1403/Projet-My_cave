@@ -28,6 +28,8 @@ class Region
     #[ORM\JoinColumn(nullable: false)]
     private ?Country $country = null;
 
+ 
+
     public function __construct()
     {
         $this->bottles = new ArrayCollection();

@@ -1,0 +1,23 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+@font-face {
+	font-family: "regular";
+	src: url(/assets/font/SourceSansPro-Regular.ttf);
+}
+@font-face {
+	font-family: "bold";
+	src: url(/assets/font/SourceSansPro-Bold.ttf);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: regular;
+}
+h1,h2 h3,h4,h5,h6{
+	font-family: bold;
+}

@@ -19,12 +19,6 @@ class Country
     private ?string $country = null;
 
     /**
-     * @var Collection<int, Bottle>
-     */
-    #[ORM\OneToMany(targetEntity: Bottle::class, mappedBy: 'country')]
-    private Collection $bottles;
-
-    /**
      * @var Collection<int, Region>
      */
     #[ORM\OneToMany(targetEntity: Region::class, mappedBy: 'country')]
@@ -32,7 +26,6 @@ class Country
 
     public function __construct()
     {
-        $this->bottles = new ArrayCollection();
         $this->regions = new ArrayCollection();
     }
 
@@ -49,36 +42,6 @@ class Country
     public function setCountry(string $country): static
     {
         $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Bottle>
-     */
-    public function getBottles(): Collection
-    {
-        return $this->bottles;
-    }
-
-    public function addBottle(Bottle $bottle): static
-    {
-        if (!$this->bottles->contains($bottle)) {
-            $this->bottles->add($bottle);
-            $bottle->setCountry($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBottle(Bottle $bottle): static
-    {
-        if ($this->bottles->removeElement($bottle)) {
-            // set the owning side to null (unless already changed)
-            if ($bottle->getCountry() === $this) {
-                $bottle->setCountry(null);
-            }
-        }
 
         return $this;
     }

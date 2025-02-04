@@ -45,15 +45,7 @@ class Bottle
 
     #[ORM\ManyToOne(inversedBy: 'bottles')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Year $year = null;
-
-    #[ORM\ManyToOne(inversedBy: 'bottles')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Region $region = null;
-
-    #[ORM\ManyToOne(inversedBy: 'bottles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Country $country = null;
 
     /**
      * @var Collection<int, Cellar>
@@ -66,6 +58,9 @@ class Bottle
      */
     #[ORM\ManyToMany(targetEntity: Grapes::class, inversedBy: 'bottles')]
     private Collection $grapes;
+
+    #[ORM\Column]
+    private ?int $year = null;
 
     public function __construct()
     {
@@ -126,18 +121,6 @@ class Bottle
         return $this;
     }
 
-    public function getYear(): ?Year
-    {
-        return $this->year;
-    }
-
-    public function setYear(?Year $year): static
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
     public function getRegion(): ?Region
     {
         return $this->region;
@@ -146,18 +129,6 @@ class Bottle
     public function setRegion(?Region $region): static
     {
         $this->region = $region;
-
-        return $this;
-    }
-
-    public function getCountry(): ?Country
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?Country $country): static
-    {
-        $this->country = $country;
 
         return $this;
     }
@@ -232,5 +203,17 @@ class Bottle
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): static
+    {
+        $this->year = $year;
+
+        return $this;
     }
 }
