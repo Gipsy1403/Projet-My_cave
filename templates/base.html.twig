@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
 	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
         <title>{% block title %}Welcome!{% endblock %}</title>
     
         {% block stylesheets %}
@@ -16,33 +17,33 @@
         {% endblock %}
     </head>
     <body>
-    <header id="header">
+    		<header>
 			<nav>
-			<a href={{path ("home")}}><img src="{{ asset('imglog/logo.png') }}" alt="logo"></a>
-				<div class="menu_dropdown">
-					<ul>
-						<li><a href={{path('home')}}>Accueil</a></li>
-						<li><a href="">Mes Caves</a></li>
-						{# <li><a href={{path('explore')}}>Explorer</a></li> #}
-						{% if not is_granted('ROLE_USER') %}
-							<li><a href={{path('app_login')}}>Se connecter</a></li>
-							<li><a href={{path('app_register')}}>S'inscrire</a></li>
-							{% else %}
-								<li><a href="">Ajouter</a></li>
-								<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
-						{% endif %}
-						{% if not is_granted('ROLE_ADMIN') %}
-							{% else %}
-								<li><a href="">Administrateur</a></li>
-						{% endif %}
-					</ul>
-					<i class="fa-solid fa-bars"></i>
-				</div>
+				<a href={{path ("home")}}><img src="{{ asset('imglog/logo.png') }}" alt="logo"></a>
+				{# <div class="menu_dropdown"> #}
+				<ul>
+					<li><a href={{path('home')}}>Accueil</a></li>
+					<li><a href="">Mes Caves</a></li>
+					<li><a href="">Explorer</a></li>
+					{% if not is_granted('ROLE_USER') %}
+						<li><a href={{path('app_login')}}>Se connecter</a></li>
+						<li><a href={{path('app_register')}}>S'inscrire</a></li>
+						{% else %}
+							<li><a href="">Ajouter</a></li>
+							<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
+					{% endif %}
+					{% if not is_granted('ROLE_ADMIN') %}
+						{% else %}
+							<li><a href="">Administrateur</a></li>
+					{% endif %}
+				</ul>
+				<i class="fa-solid fa-bars"></i>
+				{# </div> #}
 			</nav>
 		</header>
         {% block banner %}
 	   	<div class="banner">
-			<h1>Gérer votre Cave avec simplicité !</h1>
+			<h2>Gérer votre Cave avec simplicité !</h2>
 		</div>
 	   {% endblock %}
         
@@ -50,18 +51,27 @@
 
 	   {% block footer %}
 	   	<footer>
-
 			<div class="footbar">
+				<h4>Menu</h4>
 				<a href={{path ("home")}}>Accueil</a>
 				<a href="">Mes Caves</a>
 				<a href="">Explorer</a>
 			</div>
-			<a href={{path ("home")}}><img src="{{ asset('imglog/logo-large-white.png') }}" alt="logo"></a>
+			<div class="contact">
+				<h4><a href="">Nous contacter</a></h4>
+			</div>
+			<div class="copyright">
+				<a class="logofoot" href={{path ("home")}}><img src="{{ asset('imglog/logo-white.png') }}" alt="logo"></a>
+				<p>Copyright - My Cave</p>
+			</div>
 			<div class="about">
-				<p>A propos de My Cave</p>
+				<h4>A propos de My Cave</h4>
 				<a href="">Mentions légales</a>
 			</div>
-			<a href="">Nous contacter</a>
+			<div class="reglementation">
+				<h4>Réglementation</h4>
+				<a href="#https://www.vindefrance.com/pro/reglementation">Anivin de France</a>
+			</div>
 		</footer>
 	   {% endblock %}
     </body>

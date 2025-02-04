@@ -1,2 +1,24 @@
 @use "../abstract/variable" as v;
 @use "../abstract/mixins" as m;
+
+footer{
+	@include m.flex(space-around,flex-start);
+	background-color: v.$first-color;
+	color: white;
+	height: 7rem;
+	padding: 1rem 0;
+	a{
+		color: white;
+		// padding-bottom: 1rem;
+	}
+	.footbar{
+		display: flex;
+		flex-direction: column;
+		align-content: space-around;
+	}
+	h4{
+		text-decoration: underline;
+		padding-bottom: 1rem;
+	}
+	
+}
