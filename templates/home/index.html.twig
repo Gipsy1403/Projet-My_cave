@@ -11,10 +11,14 @@
 			<p>Passionné ou collectionneur, créez votre espace personnalisé et explorez de nouvelles références.</p>
 			<p>Votre cave, toujours à portée de main !</p>
 		</div>
-		<div class="button_accueil">
-			<a class="btn_inscription" href="">S'inscrire</a>
-			<a class="btn_login" href="">Se connecter</a>
-		</div>
+		{% if not is_granted('ROLE_USER') %}
+			<div class="button_accueil">
+				<a class="btn_inscription" href={{path('app_register')}}>S'inscrire</a>
+				<a class="btn_login" href={{path('app_login')}}>Se connecter</a>
+				{% else %}
+					<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
+			</div>
+		{% endif %}
 	</section>
 	<section>
 		{# les 4 derniers vins ajoutés #}

@@ -25,13 +25,13 @@
 					<li><a href={{path('home')}}>Accueil</a></li>
 					<li><a href="">Mes Caves</a></li>
 					<li><a href="">Explorer</a></li>
-					{% if not is_granted('ROLE_USER') %}
+					{# {% if not is_granted('ROLE_USER') %}
 						<li><a href={{path('app_login')}}>Se connecter</a></li>
 						<li><a href={{path('app_register')}}>S'inscrire</a></li>
 						{% else %}
 							<li><a href="">Ajouter</a></li>
 							<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
-					{% endif %}
+					{% endif %} #}
 					{% if not is_granted('ROLE_ADMIN') %}
 						{% else %}
 							<li><a href="">Administrateur</a></li>
@@ -43,9 +43,6 @@
 		</header>
         {% block banner %}
 	   	<div class="banner">
-	   {# {% block logovertical %}
-	   <div class="logovertical"></div>
-	   {% endblock %} #}
 			<h2 class="slogan">Gérer votre Cave avec simplicité !</h2>
 			<img class="logovertical" src="{{ asset ("img/logo-vertical.png")}}" alt="logo vertical">
 		</div>
@@ -67,7 +64,7 @@
 			</div>
 			<div class="copyright">
 				<a class="logofoot" href={{path ("home")}}><img src="{{ asset('img/logo-white.png') }}" alt="logo"></a>
-				<p>Copyright - My Cave</p>
+				<p>© - 2025 - My Cave</p>
 			</div>
 			<div class="about">
 				<h4>A propos de My Cave</h4>

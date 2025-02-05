@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BottleController!{% endblock %}
+{% block title %}Mes Caves{% endblock %}
 
 {% block body %}
 	<h1>{{ isModification ? "Modifier": "Ajouter"}}</h1>
 	<div class="form ajout">
 		{{form_start(bottleform)}}
 			{{form_widget(bottleform)}}
-			<button>{{ isModification ? "Modifier": "Ajouter"}}</button>
+			{# <button>{{ isModification ? "Modifier": "Ajouter"}}</button> #}
 		{{form_end(bottleform)}}
 	</div>
 {% endblock %}

@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use App\Entity\Year;
 use App\Entity\Bottle;
 use App\Entity\Cellar;
 use App\Entity\Grapes;
@@ -32,10 +31,7 @@ class BottleType extends AbstractType
                 'class' => User::class,
 'choice_label' => 'id',
             ])
-            ->add('year', EntityType::class, [
-                'class' => Year::class,
-'choice_label' => 'id',
-            ])
+            ->add('year')
             ->add('region', EntityType::class, [
                 'class' => Region::class,
 'choice_label' => 'id',

@@ -4,11 +4,13 @@
 
 {% block body %}
 
-	
-	<h1> S'incrire</h1>
-
-	{{form_start(userForm)}}
-	    {{form_widget(userForm)}}
-	    <button>Valider</button>
-	{{form_start(userForm)}}
+	<div class="formulaire">
+		<div class="form">
+			{{form_start(userForm)}}
+				<h1>S'inscrire</h1>
+			{{form_widget(userForm)}}
+			<button>Valider</button>
+			{{form_end(userForm)}}
+		</div>
+	</div>
 {% endblock %}
