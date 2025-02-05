@@ -37,8 +37,7 @@ nav{
 .banner {
 	position: relative;
 	width: 100%;
-	height: 300px;
-	background: linear-gradient(0deg, rgba(62,0,24,1) 20%, rgba(136,92,126,0) 60%);
+	height:300px;                                 background: linear-gradient(0deg, rgba(62,0,24,1) 20%, rgba(255,255,255,0) 60%);
 	&::after {
 		content: "";
 		position: absolute;
@@ -52,10 +51,20 @@ nav{
 		opacity: 0.5;
 		z-index: -1;
 	 }
-	h1{
+	.slogan{
 		color: v.$first-color;
-		text-align: center;
-		
+		// text-align: center;
+		display: block;
+		@include m.flex;
+		height: 210px;
+		text-shadow: 0 2px 3px white;
+	}
+	.logovertical{
+		margin: 0;
+		max-height: 80vh;
+		top:0;
+		right: 0;
+		position: absolute;
 	}
 }
 
@@ -72,12 +81,14 @@ nav{
 			font-size: 1.5em;
 			color: v.$snd-color;
 		}
-
 	}
-
+}
+.button_accueil{
+	position:relative;
+	height: 500px;
 }
 .btn_inscription{
-	width: 300px;
+	width: 250px;
 	height: 250px;
 	background-color: v.$snd-color;
 	display: block;
@@ -86,12 +97,16 @@ nav{
 	font-weight: bold;
 	border-radius: 130px 110px 90px 160px;
 	@include m.flex;
-	box-shadow: 20px 10px 20px black;
+	box-shadow: 12px -8px 30px black;
+	position: absolute;
+	bottom: 2rem;
+	
+	
 	
 }
 .btn_login{
 	width: 250px;
-	height: 300px;
+	height: 270px;
 	background-color: v.$third-color;
 	display: block;
 	color: white;
@@ -99,6 +114,9 @@ nav{
 	font-weight: bold;
 	border-radius: 60px 160px 90px 100px;
 	@include m.flex;
-	box-shadow: 0px 10px 40px black;
-	
+	box-shadow: 0px 5px 40px black;
+	position:absolute;
+	top:30px;
+	left: 150px;
 }
+

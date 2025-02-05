@@ -19,7 +19,7 @@
     <body>
     		<header>
 			<nav>
-				<a href={{path ("home")}}><img src="{{ asset('imglog/logo.png') }}" alt="logo"></a>
+				<a href={{path ("home")}}><img src="{{ asset('img/logo.png') }}" alt="logo"></a>
 				{# <div class="menu_dropdown"> #}
 				<ul>
 					<li><a href={{path('home')}}>Accueil</a></li>
@@ -43,11 +43,16 @@
 		</header>
         {% block banner %}
 	   	<div class="banner">
-			<h2>Gérer votre Cave avec simplicité !</h2>
+	   {# {% block logovertical %}
+	   <div class="logovertical"></div>
+	   {% endblock %} #}
+			<h2 class="slogan">Gérer votre Cave avec simplicité !</h2>
+			<img class="logovertical" src="{{ asset ("img/logo-vertical.png")}}" alt="logo vertical">
 		</div>
 	   {% endblock %}
         
 	   {% block body %}{% endblock %}
+
 
 	   {% block footer %}
 	   	<footer>
@@ -61,7 +66,7 @@
 				<h4><a href="">Nous contacter</a></h4>
 			</div>
 			<div class="copyright">
-				<a class="logofoot" href={{path ("home")}}><img src="{{ asset('imglog/logo-white.png') }}" alt="logo"></a>
+				<a class="logofoot" href={{path ("home")}}><img src="{{ asset('img/logo-white.png') }}" alt="logo"></a>
 				<p>Copyright - My Cave</p>
 			</div>
 			<div class="about">
@@ -74,5 +79,7 @@
 			</div>
 		</footer>
 	   {% endblock %}
+
+
     </body>
 </html>
