@@ -21,23 +21,17 @@ final class BottleController extends AbstractController{
 			$bottle=new Bottle;
 		}
 	$form = $this->createForm(BottleType::class,$bottle);
-
-	// Récupération des données POST du formulaire
 	$form->handleRequest($request);
-	// Vérification si le formulaire est soumis et Valide
 	if($form->isSubmitted() && $form->isValid()){
 			// dd($bottle);
-	// Persistance des données
 		$bottle->setUser($this->getUser("id"));
 		$entityManager->persist($bottle);
-	// Envoi en BDD
-		$entityManager->flush();
 
-	// Redirection de l'utilisateur
+		$entityManager->flush();
 		return $this->redirectToRoute('explorer');
 	}
 	return $this->render('bottle/addupdate.html.twig', [
-		'bottleform' => $form->createView(), //envoie du formulaire en VUE
+		'bottleform' => $form->createView(), 
 		'isModification' => $bottle->getId() !== null 
 	]);
 }

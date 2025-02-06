@@ -16,7 +16,7 @@ class Grapes
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $grape = null;
+    private ?string $name = null;
 
     /**
      * @var Collection<int, Bottle>
@@ -34,14 +34,14 @@ class Grapes
         return $this->id;
     }
 
-    public function getGrape(): ?string
+    public function getName(): ?string
     {
-        return $this->grape;
+        return $this->name;
     }
 
-    public function setGrape(string $grape): static
+    public function setName(string $name): static
     {
-        $this->grape = $grape;
+        $this->name = $name;
 
         return $this;
     }

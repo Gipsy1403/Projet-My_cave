@@ -16,7 +16,7 @@ class Region
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $region = null;
+    private ?string $name = null;
 
     /**
      * @var Collection<int, Bottle>
@@ -40,14 +40,14 @@ class Region
         return $this->id;
     }
 
-    public function getRegion(): ?string
+    public function getName(): ?string
     {
-        return $this->region;
+        return $this->name;
     }
 
-    public function setRegion(string $region): static
+    public function setName(string $name): static
     {
-        $this->region = $region;
+        $this->name = $name;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,9 +23,6 @@ class Bottle
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $picture = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -59,7 +57,7 @@ class Bottle
     #[ORM\ManyToMany(targetEntity: Grapes::class, inversedBy: 'bottles')]
     private Collection $grapes;
 
-    #[ORM\Column]
+    #[ORM\Column(type:"string",length: 4)]
     private ?int $year = null;
 
     public function __construct()
@@ -81,18 +79,6 @@ class Bottle
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): static
-    {
-        $this->picture = $picture;
 
         return $this;
     }

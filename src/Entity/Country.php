@@ -16,7 +16,7 @@ class Country
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $country = null;
+    private ?string $name = null;
 
     /**
      * @var Collection<int, Region>
@@ -34,14 +34,14 @@ class Country
         return $this->id;
     }
 
-    public function getCountry(): ?string
+    public function getName(): ?string
     {
-        return $this->country;
+        return $this->name;
     }
 
-    public function setCountry(string $country): static
+    public function setName(string $name): static
     {
-        $this->country = $country;
+        $this->name = $name;
 
         return $this;
     }

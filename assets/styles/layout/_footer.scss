@@ -2,23 +2,34 @@
 @use "../abstract/mixins" as m;
 
 footer{
-	@include m.flex(space-around,flex-start);
 	background-color: v.$first-color;
 	color: white;
-	height: 7rem;
-	padding: 1rem 0;
-	a{
-		color: white;
-		// padding-bottom: 1rem;
+	padding-top: 2rem;
+	.footer{
+		@include m.flex(space-around,flex-start);
+		a{
+			color: white;
+			// padding-bottom: 1rem;
+			font-size: 0.9em;
+		}
+		.footbar{
+			display: flex;
+			flex-direction: column;
+			align-content: space-around;
+		}
+		h4{
+			text-decoration: underline;
+			padding-bottom: 1rem;
+		}
+		.copyright{
+			font-size: 0.6em;
+			text-align: center;
+		}
+		
 	}
-	.footbar{
-		display: flex;
-		flex-direction: column;
-		align-content: space-around;
-	}
-	h4{
-		text-decoration: underline;
+	.exces{
+		text-align: center;
 		padding-bottom: 1rem;
+		font-size: 0.8em;
 	}
-	
 }

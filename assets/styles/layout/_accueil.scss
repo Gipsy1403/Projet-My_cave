@@ -1,0 +1,55 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+// boutons en page d'accueil******************
+.section_accueil{
+	@include m.flex;
+	width: 80%;
+	color: v.$first-color;
+	.welcome{
+		// @include m.flex;
+		text-align: center;
+		width: 60%;
+		strong{
+			font-size: 1.5em;
+			color: v.$snd-color;
+		}
+	}
+}
+.button_accueil{
+	position:relative;
+	height: 500px;
+}
+.btn_inscription{
+	width: 250px;
+	height: 250px;
+	background-color: v.$snd-color;
+	display: block;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 130px 110px 90px 160px;
+	@include m.flex;
+	box-shadow: 12px -8px 30px black;
+	position: absolute;
+	bottom: 2rem;
+	
+	
+	
+}
+.btn_login{
+	width: 250px;
+	height: 270px;
+	background-color: v.$third-color;
+	display: block;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 60px 160px 90px 100px;
+	@include m.flex;
+	box-shadow: 0px 5px 40px black;
+	position:absolute;
+	top:30px;
+	left: 150px;
+}
+

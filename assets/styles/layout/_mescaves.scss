@@ -1,0 +1,95 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+
+#container_add{
+	@include m.flex;
+	width: 100%;
+	color: v.$first-color;
+	padding-top: 3rem;
+	.rules{
+		line-height: 1.5;
+		margin: 3rem;
+		width: 50%;
+		background-color: rgba(255, 255, 255, 0.400
+		);
+		padding: 1rem;
+		border-radius: 50px 0 50px 0;
+		h1{
+			padding-bottom: 1rem;
+			color: v.$snd-color;
+		}
+	}
+	.add_wine{
+		text-align: center;
+		color: v.$first-color;
+		width: 30%;
+		line-height: 1.5;
+		background-color: rgba(255, 255, 255, 0.400
+		);
+		padding: 3rem;
+		border-radius: 50%;
+		p{
+			margin-bottom: 3rem;
+		}
+		.btn_add{
+			background-color: v.$first-color;
+			font-weight: bold;
+			color:white;
+			padding: 10px 15px;
+			font-size: 1.2em;
+			border-radius: 10px;
+			
+		}
+	}
+}
+.container_mescaves{
+
+}
+// article{
+// 	margin:1rem 1rem;
+// 	display: flex;
+// 	justify-content: space-around;
+// 	flex-wrap: wrap;
+// 	.container_mescaves{
+// 		display: flex;
+// 		flex-direction: column;
+// 		justify-content: center;
+// 		align-items: space-between;
+// 		width: 300px;
+// 		height: 500px;
+// 		border-radius: 5px;
+// 		background-color: v.$bgColor;
+// 		padding: 1rem;
+// 		border-radius: 10px;
+// 		margin: 3rem 0;
+// 		box-shadow: 2px 5px 10px gray;
+// 		// transform: translateY(-10px);
+// 		img{
+// 		    width: 250px;
+// 		    height: 250px;
+// 		    object-fit: cover;
+// 		    padding: 1rem;
+// 		}
+// 		p{
+// 			font-size: 0.9em;
+// 			padding: 1rem 0;
+// 		}
+		
+// 	}
+// 	.btn_bloc{
+// 		@include m.flex(row,margin-left);
+  
+// 		a,button{
+// 		    margin-right:1rem;
+// 		    color:v.$btnColor;
+// 		}
+// 	 }
+// }
+// .linksee{
+// 	a{
+// 	color: v.$btnColor;
+// 	font-family: v.$sloganFont;
+// 	font-size: 1.2em;
+// 	}
+// }

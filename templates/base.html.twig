@@ -17,13 +17,17 @@
         {% endblock %}
     </head>
     <body>
+{# Barre de navigation #}
     		<header>
 			<nav>
 				<a href={{path ("home")}}><img src="{{ asset('img/logo.png') }}" alt="logo"></a>
 				{# <div class="menu_dropdown"> #}
 				<ul>
+					{% if is_granted('ROLE_USER') %}
+						<li class="welcome_login"><em>Bienvenue à toi {{ app.user.firstname |capitalize}} !</em></li>
+					{% endif %}
 					<li><a href={{path('home')}}>Accueil</a></li>
-					<li><a href="">Mes Caves</a></li>
+					<li><a href={{path('mescaves')}}>Mes Caves</a></li>
 					<li><a href="">Explorer</a></li>
 					{# {% if not is_granted('ROLE_USER') %}
 						<li><a href={{path('app_login')}}>Se connecter</a></li>
@@ -32,6 +36,10 @@
 							<li><a href="">Ajouter</a></li>
 							<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
 					{% endif %} #}
+					{% if is_granted('ROLE_USER') %}
+						<li><a href={{path('app_logout')}} title="Se déconnecter"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+					{% endif %}
+
 					{% if not is_granted('ROLE_ADMIN') %}
 						{% else %}
 							<li><a href="">Administrateur</a></li>
@@ -41,39 +49,69 @@
 				{# </div> #}
 			</nav>
 		</header>
+
+{# Bannière avec logo vertical #}
         {% block banner %}
 	   	<div class="banner">
 			<h2 class="slogan">Gérer votre Cave avec simplicité !</h2>
 			<img class="logovertical" src="{{ asset ("img/logo-vertical.png")}}" alt="logo vertical">
 		</div>
 	   {% endblock %}
-        
-	   {% block body %}{% endblock %}
 
+{# Background sur toutes les pages sauf l'accueil #}
+       	<main class=
+			{% if app.request.get('_route') != 'home' %} "background_main"
+	  		{% endif %}>
+   	 	{% block body %}{% endblock %}
+		</main>
 
+{# Gestion des messages #}
+		{# messages succes #}
+        	{% for message in app.flashes('success') %}
+    			<div class="alert alert-success">
+        		{{ message }}
+    			</div>
+		{% endfor %}
+		{# messages bloquants #}
+		{% for message in app.flashes('error') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{# messages avertissements #}
+		{% for message in app.flashes('warning') %}
+		<div class="alert alert-warning">
+			{{ message }}
+		</div>
+		{% endfor %}
+
+{# Footer #}
 	   {% block footer %}
 	   	<footer>
-			<div class="footbar">
-				<h4>Menu</h4>
-				<a href={{path ("home")}}>Accueil</a>
-				<a href="">Mes Caves</a>
-				<a href="">Explorer</a>
+			<div class="footer">
+				<div class="footbar">
+					<h4>Menu</h4>
+					<a href={{path ("home")}}>Accueil</a>
+					<a href={{path('mescaves')}}>Mes Caves</a>
+					<a href="">Explorer</a>
+				</div>
+				<div class="contact">
+					<h4><a href={{path('contact')}}>Nous contacter</a></h4>
+				</div>
+				<div class="copyright">
+					<a class="logofoot" href={{path ("home")}}><img src="{{ asset('img/logo-white.png') }}" alt="logo"></a>
+					<p>© - 2025 - My Cave</p>
+				</div>
+				<div class="about">
+					<h4>A propos de My Cave</h4>
+					<a href="">Mentions légales</a>
+				</div>
+				<div class="reglementation">
+					<h4>Réglementation</h4>
+					<a href="#https://www.vindefrance.com/pro/reglementation">Anivin de France</a>
+				</div>
 			</div>
-			<div class="contact">
-				<h4><a href="">Nous contacter</a></h4>
-			</div>
-			<div class="copyright">
-				<a class="logofoot" href={{path ("home")}}><img src="{{ asset('img/logo-white.png') }}" alt="logo"></a>
-				<p>© - 2025 - My Cave</p>
-			</div>
-			<div class="about">
-				<h4>A propos de My Cave</h4>
-				<a href="">Mentions légales</a>
-			</div>
-			<div class="reglementation">
-				<h4>Réglementation</h4>
-				<a href="#https://www.vindefrance.com/pro/reglementation">Anivin de France</a>
-			</div>
+			<p class="exces"><em>"L'abus d'alcool est dangereux pour la santé. À consommer avec modération."</em></p>
 		</footer>
 	   {% endblock %}
 

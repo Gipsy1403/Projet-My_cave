@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Caves{% endblock %}
+{% block banner %}{% endblock %}
+
+
+{% block body %}
+
+	<section id ="container_add">
+		<div class="rules">
+			<h1>Gérez votre cave en toute simplicité !</h1>
+			<ul>
+				<li><strong>Créez votre cave</strong> : Donnez-lui un nom et commencez à l’organiser.</li>
+				<li><strong>Ajoutez vos bouteilles</strong> : Renseignez le nom, le millésime, le cépage et plus encore.</li>
+				<li><strong>Classez et organisez</strong> : Filtrez par type, région ou année pour mieux vous y retrouver.</li>
+				<li><strong>Explorez d’autres caves</strong> : Découvrez les collections des autres passionnés.</li>
+				<li><strong>Mettez à jour votre cave</strong> : Modifiez, ajoutez des notes ou supprimez des bouteilles facilement.</li>
+			</ul>
+		</div>
+		<div class="add_wine">
+			<p>Accédez à votre collection où que vous soyez et profitez pleinement de votre passion du vin !</p>
+
+			{% if is_granted('ROLE_USER') %}
+				<a class="btn_add" href={{ path ('add_bottle')}}>Ajouter un Vin</a>
+				{% else %}
+				<p><em>"Veuillez vous <a href={{ path ('app_register')}}><strong>inscrire</strong></a>, pour ajouter un vin. Merci !"</em></p>
+					{% endif %}
+
+		</div>
+	</section>
+	
+	
+	<article>
+		{% for bottle in bottles %}
+			<div class="container_mescaves">
+				<div class="main_article">
+					<img src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
+					<h3>{{bottle.title}}</h3>
+					{# <h4>{{grapes.grape}}</h4> #}
+					<h4>{{bottle.year}}</h4>
+					<p>{{bottle.description|slice(0, 30)~"..."}}</p>
+					<a class="linksee" href={{path('view',{id: bottle.id})}}>Voir plus...</a>
+				</div>
+				<div class="btn_bloc">
+				{% if app.user == bottle.user %}
+					<a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a>
+					<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
+						<input type="hidden" name="_method" value="delete">
+						<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bottle.id)}}">
+						<button class="btn_suppr">Supprimer</button>
+					</form>
+				{% endif %}
+				</div>	
+			</div>
+		{% endfor %}	
+	</article>
+
+{% endblock %}
