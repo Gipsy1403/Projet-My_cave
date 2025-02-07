@@ -9,16 +9,18 @@ use App\Entity\Grapes;
 use App\Entity\Region;
 use App\Entity\Country;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
+// use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
-#[IsGranted('ROLE_ADMIN')]
-#[AdminDashboard(routePath: '/admin', routeName: 'admin')]
+// #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+	#[IsGranted('ROLE_ADMIN')]
+	#[Route('/admin', name: 'admin')]
     public function index(): Response
     {
 	return $this->render('admin/index.html.twig');
@@ -60,6 +62,7 @@ class DashboardController extends AbstractDashboardController
 	   yield MenuItem::linkToCrud('Cépages', 'fas fa-list', Grapes::class);
 	   yield MenuItem::linkToCrud('Les utilisateurs', 'fas fa-list', User::class);
 	   yield MenuItem::linkToCrud('Les caves', 'fas fa-list', Cellar::class);
+	   
 
     }
 }

@@ -24,13 +24,23 @@
 		{# les 4 derniers vins ajoutés #}
 		<h2>Voici les dernières entrées</h2>
 		{% for bottle in bottles %}
-		<div class="card_welcome">
-			<div class="back">
-				<img src={{asset('images/' ~ bottle.imageName )}} alt="Bouteille de vin">
-				<h3>{{bottle.title}}</h3>
-				{# <h4>{{grapes.grape}}</h4> #}
-				<h4>{{bottle.year}}</h4>
-				<p>{{bottle.description}}</p>
+		<div class="card_container">
+			<div class="card_wrap">
+				<div class="card_welcome">
+					<div class="card">
+						<div class="cardfront">
+							<img src={{asset('images/' ~ bottle.imageName )}} alt="Bouteille de vin">
+							<h3>titre{{bottle.title}}</h3>
+							{# <h4>{{grapes.grape}}</h4> #}
+							<h4>annee{{bottle.year}}</h4>
+                        			<i class="fa-regular fa-circle-right"></i>
+						</div>
+							
+						<div class="cardback">
+							<p>description{{bottle.description}}</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		{% endfor %}

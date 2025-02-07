@@ -1,0 +1,12 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+.forgotpassword{
+	font-size: 0.8em;
+	&:hover{
+		background-color: rgba(255, 255, 255, 0.62);
+		font-weight: bold;
+		padding: 10px;
+		border-radius: 10px;
+	}
+}

@@ -53,3 +53,78 @@
 	left: 150px;
 }
 
+// Les 4 derniers vins ajoutés - Cartes recto/verso
+
+.card_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	grid-gap: 30px;
+	margin: 80px 0;
+}
+.card_wrap {
+	position: relative;
+	min-height: 350px;
+	perspective: 2000px;
+	perspective-origin: top;
+}
+.card_wrap:hover .card {
+	transform: rotateY(180deg);
+}
+.card {
+	position: relative;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.cardfront,.cardback {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	padding: 30px;
+	border-radius: 8px;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.cardfront {
+	background-color: v.$snd_color;
+	@include m.flex;
+	img {
+		width: 300px;
+		height: 300px;
+		max-width: 300px;
+		box-shadow: 20px 20px 20px v.$snd-color;
+		transition: all 0.3s linear;
+		border-radius: 10%;
+		object-fit: cover;
+		border: 1px solid white;
+		&:active {
+		  transform: translate(5px, 5px);
+		  box-shadow: 0px 0px 0px;
+		}
+	}
+	.fa-circle-right {
+	  position: absolute;
+	  right: 30px;
+	  bottom: 30px;
+	  font-size: 1.3em;
+	  color: white;
+	}
+}
+.card_wrap:nth-child(even) .cardfront {
+	background-color: red;
+}
+.cardback {
+	background: v.$first-color;
+	background: linear-gradient(
+	  230deg,
+	  v.$first-color 27%,
+	  v.$third-color 90%
+	);
+	transform: rotateY(180deg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.card_wrap:nth-child(even) .cardback {
+	background-color: red;
+}

@@ -3,10 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Bottle;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class BottleCrudController extends AbstractCrudController
 {
@@ -23,6 +24,12 @@ class BottleCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('description'),
             TextField::new('year'),
+		  AssociationField::new('cellar')
+            ->setFormTypeOption(
+			'by_reference',false,
+			"multiple",true,
+			"choice_label","name",
+		),
 
         ];
     }

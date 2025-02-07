@@ -31,10 +31,17 @@ h1,h2 h3,h4,h5,h6{
 	font-family: bold;
 }
 
+// gestion des onglets de la barre de navigation
+.active{
+	color: v.$third-color;
+	transform:scale(1.2);
+	text-decoration:underline;
+}
+
 // gestion des messages
 .alert {
 	background-color: #fbfbfc9e;
-	margin: 6rem;
+	margin: 3rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
