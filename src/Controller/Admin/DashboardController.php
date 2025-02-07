@@ -50,19 +50,21 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Mycave');
-    }
+		  ->setTitle('<a href="/" title="retour à l\'accueil"><img src="/img/logo.png" width="80"></a>');
+	    }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Tableau de Bord', 'fa fa-home');
-        yield MenuItem::linkToCrud('Vins', 'fas fa-list', Bottle::class);
-	   yield MenuItem::linkToCrud('Régions', 'fas fa-list', Region::class);
-	   yield MenuItem::linkToCrud('Pays', 'fas fa-list', Country::class);
-	   yield MenuItem::linkToCrud('Cépages', 'fas fa-list', Grapes::class);
-	   yield MenuItem::linkToCrud('Les utilisateurs', 'fas fa-list', User::class);
-	   yield MenuItem::linkToCrud('Les caves', 'fas fa-list', Cellar::class);
-	   
+	    yield MenuItem::linkToDashboard('Tableau de Bord', 'fa fa-home');
+	    yield MenuItem::linkToCrud('Les utilisateurs', 'fa fa-circle-user', User::class);
+	    yield MenuItem::linkToCrud('Les caves', 'fa fa-dungeon', Cellar::class);
+	    yield MenuItem::linkToCrud('Vins', 'fa fa-wine-bottle', Bottle::class);
+	    yield MenuItem::linkToCrud('Cépages', 'fa fa-wine-glass', Grapes::class);
+	    yield MenuItem::linkToCrud('Régions', 'fa fa-map-location-dot', Region::class);
+	    yield MenuItem::linkToCrud('Pays', 'fa fa-earth-europe', Country::class);
+	    yield MenuItem::section('**********'); // Séparateur
+	    yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
+	    
 
     }
 }

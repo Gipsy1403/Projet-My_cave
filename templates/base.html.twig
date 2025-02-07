@@ -4,8 +4,9 @@
     <head>
         <meta charset="UTF-8">
 	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+	   <link rel="icon" type="image/png" href="/img/accueilfavicon.png" sizes="96x96" />
+        
+	   <title>{% block title %}{% endblock %}</title>
     
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}

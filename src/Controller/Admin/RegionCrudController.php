@@ -20,9 +20,15 @@ class RegionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+		TextField::new("name")
+		->setFormTypeOptions([
+			"label"=>"nom"
+	   ]),
 		AssociationField::new('country')
-		->setCrudController(CountryCrudController::class)
-		->setRequired(true),
+		->setFormTypeOptions([
+			"choice_label" =>"name",
+			"label"=>"nom",
+		])
         ];
     }
     
