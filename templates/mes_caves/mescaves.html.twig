@@ -35,11 +35,11 @@
 			<div class="container_mescaves">
 				<div class="main_article">
 					<img src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
-					<h3>{{bottle.title}}</h3>
-					{# <h4>{{grapes.grape}}</h4> #}
+					<h3>{{bottle.name}}</h3>
+					{# <h4>{{grapes.name}}</h4> #}
 					<h4>{{bottle.year}}</h4>
 					<p>{{bottle.description|slice(0, 30)~"..."}}</p>
-					<a class="linksee" href={{path('view',{id: bottle.id})}}>Voir plus...</a>
+					<a class="linksee" href=>Voir plus...</a>
 				</div>
 				<div class="btn_bloc">
 				{% if app.user == bottle.user %}

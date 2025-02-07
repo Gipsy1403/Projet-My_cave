@@ -28,7 +28,7 @@ final class BottleController extends AbstractController{
 		$entityManager->persist($bottle);
 
 		$entityManager->flush();
-		return $this->redirectToRoute('explorer');
+		return $this->redirectToRoute('mescaves');
 	}
 	return $this->render('bottle/addupdate.html.twig', [
 		'bottleform' => $form->createView(), 
@@ -44,7 +44,7 @@ final class BottleController extends AbstractController{
             $entityManager->remove($bottle);
             $entityManager->flush();
             $this->addFlash('success','La suppression à été effectuée');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('mescaves');
         }
     }
 }
