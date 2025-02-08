@@ -30,14 +30,17 @@
 					<div class="card">
 						<div class="cardfront">
 							<img src={{asset('images/' ~ bottle.imageName )}} alt="Bouteille de vin">
-							<h3>titre{{bottle.name}}</h3>
-							{# <h4>{{asset (grapes.name)}}</h4> #}
-							<h4>annee{{bottle.year}}</h4>
+							<h3>{{bottle.name}}</h3>
+							<h4>{{bottle.year}}</h4>
+							<p> {% for grape in bottle.grapes %}
+        							{{ grape.name }}{% if not loop.last %}, {% endif %}
+   								{% endfor %}
+							</p>
                         			<i class="fa-regular fa-circle-right"></i>
 						</div>
 							
 						<div class="cardback">
-							<p>description{{bottle.description}}</p>
+							<p>{{bottle.description}}</p>
 						</div>
 					</div>
 				</div>

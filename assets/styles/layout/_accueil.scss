@@ -60,11 +60,6 @@
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	grid-gap: 50px;
 	margin: 2rem 6rem 6rem 6rem;
-	// @include m.flex;
-	// flex-direction: row;
-	// margin: auto;
-	// width: 100%;
-
 }
 .card_wrap {
 	position: relative;

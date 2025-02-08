@@ -43,53 +43,94 @@
 		}
 	}
 }
+
+// #mescaves{
+// 	.filters{
+// 		display: flex;justify-content: center;
+// 		// display: grid;
+// 		// grid-template-columns: 300px 1fr;
+// 		// width: 30%;
+// 	}}
 .container_mescaves{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+	grid-gap: 50px;
+	padding: 3rem;
+	
+}
+.card_complet{
+	box-shadow: 3px 1px 15px rgb(44, 44, 44);
+	background-color: white;
+	border-radius: 10px;
+	padding: 2rem;
+	color: white;
 
 }
-// article{
-// 	margin:1rem 1rem;
-// 	display: flex;
-// 	justify-content: space-around;
-// 	flex-wrap: wrap;
-// 	.container_mescaves{
-// 		display: flex;
-// 		flex-direction: column;
-// 		justify-content: center;
-// 		align-items: space-between;
-// 		width: 300px;
-// 		height: 500px;
-// 		border-radius: 5px;
-// 		background-color: v.$bgColor;
-// 		padding: 1rem;
-// 		border-radius: 10px;
-// 		margin: 3rem 0;
-// 		box-shadow: 2px 5px 10px gray;
-// 		// transform: translateY(-10px);
-// 		img{
-// 		    width: 250px;
-// 		    height: 250px;
-// 		    object-fit: cover;
-// 		    padding: 1rem;
-// 		}
-// 		p{
-// 			font-size: 0.9em;
-// 			padding: 1rem 0;
-// 		}
-		
-// 	}
-// 	.btn_bloc{
-// 		@include m.flex(row,margin-left);
-  
-// 		a,button{
-// 		    margin-right:1rem;
-// 		    color:v.$btnColor;
-// 		}
-// 	 }
-// }
-// .linksee{
-// 	a{
-// 	color: v.$btnColor;
-// 	font-family: v.$sloganFont;
-// 	font-size: 1.2em;
-// 	}
-// }
+.main_article{
+	width: 100%;
+	@include m.flex(flex-start);
+	margin-bottom: 1.5rem;
+
+	.card_left{
+		width: 30%;
+		object-fit: cover;
+		box-shadow: 0 0 10px black;
+	}
+	.card_right{
+		background-color: #3e0018d0;
+		width: 70%;
+		margin: auto;
+		text-align: center;
+		padding: 2rem;
+		margin-left: 1rem;
+		border-radius: 20px 0 20px 0;
+		h3{
+			background-color: rgba(255, 255, 255, 0.752);
+			padding: 5px 20px;
+			border-radius: 5px;
+			color: v.$first-color;
+			margin-bottom: 1rem;
+			// color: white;
+			
+			
+		}
+		h4{
+			margin-bottom: 1rem;
+			
+		}
+	}
+}
+.card_description{
+	text-align: justify;
+	background-color: rgba(255, 255, 255, 0.167);
+	color: black;
+	border-radius: 10px;
+	padding: 1rem;
+}
+.btn_bloc{
+	@include m.flex(space-around);
+	margin-top: 2rem;
+	a{
+		color: white;
+	}
+	.btn_modify{
+		background-color: rgb(2, 77, 2);
+		border-radius: 4px;
+		box-shadow: 2px 2px 10px black;
+		padding: 5px 15px;
+		transition: all 0.1s linear;
+		&:active{
+			transform: translate(5px,5px);
+			box-shadow: 0px 0px 0px;
+		}
+		&:hover{
+			background-color: #00330a;
+		}
+	}
+}
+
+ .container_mescaves .card_complet:nth-child(even){
+	 background-color:v.$third-color;
+ }
+
+
