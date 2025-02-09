@@ -34,21 +34,25 @@
 	
 	
 	<section id="mescaves">
-		<div class="cellar_management">
 			<h2>Mes caves</h2>
-			<ul>
+		<div class="cellar_management">
 			{% for cellar in cellars %}
-			<p>{{cellar.name}}</p>
-				{% if app.user == cellar.user %}
-					<button class="btn_modify"><a href={{path('modify_cellar',{'id':cellar.id})}}>Modifier</a></button>
-					<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_cellar',{'id': cellar.id})}}">
-						<input type="hidden" name="_method" value="delete">
-						<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ cellar.id)}}">
-						<button class="btn_suppr">Supprimer</button>
-					</form>
-				{% endif %}
+				<div class="container_cellar">
+						{% if app.user == cellar.user %}
+					<div class="card_cellar">
+					<h3>{{cellar.name}}</h3>
+					</div>
+					<div class="btn_line">
+						<button class="btn_modify_line"><a href={{path('modify_cellar',{'id':cellar.id})}}>Modifier</a></button>
+						<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_cellar',{'id': cellar.id})}}">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ cellar.id)}}">
+							<button class="btn_suppr">Supprimer</button>
+						</form>
+					</div>
+				</div>
+					{% endif %}
 			{% endfor %}
-			</ul>
 		</div>
 		<div class="filters">
 			<h2>Filtres</h2>
