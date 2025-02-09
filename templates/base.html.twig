@@ -120,15 +120,13 @@
 {# Gestion des cookies #}
 
 	{% block cookies %}
-
-{% if not app.request.cookies.get('cookie_consent') %}
-<div id="cookie-banner">
-    <p>Ce site utilise des cookies pour améliorer votre expérience. </p>
-    <button id="accept-cookies">Accepter</button>
-    <a href={{ path('cookies_policy') }}>En savoir plus</a>
-</div>
-{% endif %}
-
+		{% if not app.request.cookies.get('cookie_consent') %}
+			<div id="cookie-banner">
+				<p>Ce site utilise des cookies pour améliorer votre expérience. </p>
+				<button id="accept-cookies">Accepter</button>
+				<a href={{ path('cookies_policy') }}>En savoir plus</a>
+			</div>
+		{% endif %}
 	{% endblock %}
 
     </body>

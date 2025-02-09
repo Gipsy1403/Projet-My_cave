@@ -19,6 +19,12 @@
 			padding-bottom: 1rem;
 			color: v.$snd-color;
 		}
+		#add_cellar{
+			display: flex;
+			justify-content: center;
+			margin: 1.5rem 15rem;
+
+		}
 	}
 	.add_wine{
 		text-align: center;
@@ -32,17 +38,17 @@
 		p{
 			margin-bottom: 3rem;
 		}
-		.btn_add{
-			background-color: v.$first-color;
-			font-weight: bold;
-			color:white;
-			padding: 10px 15px;
-			font-size: 1.2em;
-			border-radius: 10px;
-			
-		}
 	}
 }
+.btn_add{
+	background-color: v.$first-color;
+	font-weight: bold;
+	color:white;
+	padding: 10px 15px;
+	font-size: 1.2em;
+	border-radius: 10px;
+}
+
 
 // #mescaves{
 // 	.filters{

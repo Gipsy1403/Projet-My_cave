@@ -10,11 +10,14 @@
 		<div class="rules">
 			<h1>Gérez votre cave en toute simplicité !</h1>
 			<ul>
-				<li><strong>Créez votre cave</strong> : Donnez-lui un nom et commencez à l’organiser.</li>
-				<li><strong>Ajoutez vos bouteilles</strong> : Renseignez le nom, le millésime, le cépage et plus encore.</li>
-				<li><strong>Classez et organisez</strong> : Filtrez par type, région ou année pour mieux vous y retrouver.</li>
-				<li><strong>Explorez d’autres caves</strong> : Découvrez les collections des autres passionnés.</li>
-				<li><strong>Mettez à jour votre cave</strong> : Modifiez, ajoutez des notes ou supprimez des bouteilles facilement.</li>
+				<li><strong>1° Créez votre cave</strong> : Donnez-lui un nom et commencez à l’organiser. Vous pouvez créer plusieurs caves si vous le souhaitez !</li>
+				{% if is_granted('ROLE_USER') %}
+					<a class="btn_add" id="add_cellar" href={{ path ('add_cellar')}}>Créer une Cave</a>
+				{% endif %}
+				<li><strong>2° Ajoutez vos bouteilles</strong> : Renseignez le nom, le millésime, le cépage et plus encore.</li>
+				<li><strong>3° Classez et organisez</strong> : Filtrez par type, région ou année pour mieux vous y retrouver.</li>
+				<li><strong>4° Explorez d’autres caves</strong> : Découvrez les collections des autres passionnés.</li>
+				<li><strong>5° Mettez à jour votre cave</strong> : Modifiez, ajoutez des notes ou supprimez des bouteilles facilement.</li>
 			</ul>
 		</div>
 		<div class="add_wine">
@@ -23,14 +26,30 @@
 			{% if is_granted('ROLE_USER') %}
 				<a class="btn_add" href={{ path ('add_bottle')}}>Ajouter un Vin</a>
 				{% else %}
-				<p><em>"Veuillez vous <a href={{ path ('app_register')}}><strong>inscrire</strong></a>, pour ajouter un vin. Merci !"</em></p>
-					{% endif %}
+				<p><em>"Veuillez vous <a href={{ path ('app_register')}}><strong>inscrire</strong></a> ou vous <a href={{ path ('app_login')}}><strong>connecter</strong></a>, pour créer une cave ou ajouter un vin. Merci !"</em></p>
+			{% endif %}
 
 		</div>
 	</section>
 	
 	
 	<section id="mescaves">
+		<div class="cellar_management">
+			<h2>Mes caves</h2>
+			<ul>
+			{% for cellar in cellars %}
+			<p>{{cellar.name}}</p>
+				{% if app.user == cellar.user %}
+					<button class="btn_modify"><a href={{path('modify_cellar',{'id':cellar.id})}}>Modifier</a></button>
+					<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_cellar',{'id': cellar.id})}}">
+						<input type="hidden" name="_method" value="delete">
+						<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ cellar.id)}}">
+						<button class="btn_suppr">Supprimer</button>
+					</form>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</div>
 		<div class="filters">
 			<h2>Filtres</h2>
 		</div>
