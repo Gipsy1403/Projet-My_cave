@@ -19,6 +19,7 @@
     </head>
     <body>
 {# Barre de navigation #}
+
     		<header>
 			<nav>
 				<a class="nav_logo" href={{path ("home")}}><img src="{{ asset('img/logo.png') }}" alt="logo"></a>
@@ -105,7 +106,7 @@
 				</div>
 				<div class="about">
 					<h4>A propos de My Cave</h4>
-					<a href="">Mentions légales</a>
+					<a href={{path ("mentions")}}>Mentions légales</a>
 				</div>
 				<div class="reglementation">
 					<h4>Réglementation</h4>
@@ -116,6 +117,19 @@
 		</footer>
 	   {% endblock %}
 
+{# Gestion des cookies #}
+
+	{% block cookies %}
+
+{% if not app.request.cookies.get('cookie_consent') %}
+<div id="cookie-banner">
+    <p>Ce site utilise des cookies pour améliorer votre expérience. </p>
+    <button id="accept-cookies">Accepter</button>
+    <a href={{ path('cookies_policy') }}>En savoir plus</a>
+</div>
+{% endif %}
+
+	{% endblock %}
 
     </body>
 </html>

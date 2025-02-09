@@ -1,0 +1,23 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+#cookie-banner{
+	@include m.flex;
+	position: fixed;
+	bottom: 0;
+	width:100%;
+	background-color: v.$third-color;
+	color: white;
+	#accept-cookies{
+		background-color: green;
+		color: white;
+		padding: 5px 10px;
+		margin-left: 2rem;
+		cursor: pointer;
+	}
+	a{
+		color: v.$first-color;
+		margin-left: 10px;
+		margin-left: 1rem;
+	}
+}
