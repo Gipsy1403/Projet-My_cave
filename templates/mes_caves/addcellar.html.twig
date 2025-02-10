@@ -3,11 +3,9 @@
 {% block title %}Création Cave{% endblock %}
 
 {% block body %}
-	<h1>{{ isModification ? "Modifier": "Ajouter"}}</h1>
-	<div class="form ajout">
+	<h1>{{ isModification ? "Modifier une Cave": "Ajouter une Cave"}}</h1>
 		{{form_start(cellarForm)}}
 			{{form_widget(cellarForm)}}
-			<button>{{ isModification ? "Modifier": "Ajouter"}}</button>
+			<button class="btn_form">{{ isModification ? "Modifier": "Ajouter"}}</button>
 		{{form_end(cellarForm)}}
-	</div>
 {% endblock %}

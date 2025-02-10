@@ -47,7 +47,7 @@ class BottleType extends AbstractType
 				"multiple"=> false,
 			])
 			->add('description',TextareaType::class,[
-				"label"=>"Description"
+				"label"=>"Description",
 			])
 			->add('country', EntityType::class, [
 				'class' => Country::class,

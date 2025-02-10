@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+ {% block linkfavicon %}
+	<link rel="icon" type="image/png" href="{{asset("/img/faviconmescaves.png")}}" sizes="96x96" />
+{% endblock %}
+
 {% block title %}Mes Caves{% endblock %}
 {% block banner %}{% endblock %}
 
@@ -36,11 +40,12 @@
 	<section id="mescaves">
 			<h2>Mes caves</h2>
 		<div class="cellar_management">
+
 			{% for cellar in cellars %}
 				<div class="container_cellar">
-						{% if app.user == cellar.user %}
+					{% if app.user == cellar.user %}
 					<div class="card_cellar">
-					<h3>{{cellar.name}}</h3>
+						<h3>{{cellar.name}}</h3>
 					</div>
 					<div class="btn_line">
 						<button class="btn_modify_line"><a href={{path('modify_cellar',{'id':cellar.id})}}>Modifier</a></button>
@@ -50,45 +55,48 @@
 							<button class="btn_suppr">Supprimer</button>
 						</form>
 					</div>
-				</div>
 					{% endif %}
+				</div>
 			{% endfor %}
 		</div>
+
 		<div class="filters">
 			<h2>Filtres</h2>
 		</div>
 		<article>
+		
 			<div class="container_mescaves">
-					{% for bottle in bottles %}
+			{% for bottle in bottles %}
 				<div class="card_complet">
-						<div class="main_article">
-							<img class="card_left" src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
-							<div class="card_right">
-								<h3>{{bottle.name}}</h3>
-								<h4>{{bottle.year}}</h4>
-								<p> {% for grape in bottle.grapes %}
-        									{{ grape.name }}{% if not loop.last %}, {% endif %}
-   									 {% endfor %}
-								</p>
-							</div>
+					<div class="main_article">
+						<img class="card_left" src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
+						<div class="card_right">
+							<h3>{{bottle.name}}</h3>
+							<h4>{{bottle.year}}</h4>
+							<p> {% for grape in bottle.grapes %}
+									{{ grape.name }}{% if not loop.last %}, {% endif %}
+								{% endfor %}
+							</p>
 						</div>
-						<p class="card_description" >{{bottle.description}}</p>
-							<div class="card_btn">
-								<div class="btn_bloc">
-								{% if app.user == bottle.user %}
-									<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>
-									<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
-										<input type="hidden" name="_method" value="delete">
-										<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bottle.id)}}">
-										<button class="btn_suppr">Supprimer</button>
-									</form>
-								{% endif %}
-								</div>
-							</div>
+					</div>
+					<p class="card_description" >{{bottle.description}}</p>
+						<div class="card_btn">
+							<div class="btn_bloc">
+							{% if app.user == bottle.user %}
+								<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>
+								<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bottle.id)}}">
+									<button class="btn_suppr">Supprimer</button>
+								</form>
+							{% endif %}
+						</div>
+					</div>
 				</div>
-					{% endfor %}
+			{% endfor %}
 			</div>
 		</article>
+		
 	</section>
 
 {% endblock %}

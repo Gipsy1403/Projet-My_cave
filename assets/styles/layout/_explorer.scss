@@ -1,0 +1,42 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+.container_explorer{
+	display: grid;
+	grid-template-columns: repeat(1fr);
+	padding: 3rem;
+	
+	.card_description{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		// justify-content: space-around;
+	}
+	img{
+		width: 200px;
+		height: 300px;
+		object-fit: cover;
+		box-shadow: 0 0 10px black;
+	}
+	.card_explorer{
+		background-color: v.$first-color;
+		border-radius: 10px;
+		padding: 3rem 0;
+		text-align: center;
+		color:white;
+		// display: flex;justify-content: center;
+		// flex-direction: column;
+		width: 20%;
+		h3, h4{
+			margin-bottom: 1rem;
+		}
+	}
+	.description_item{
+		width: 40%;
+		padding: 2rem;
+	}
+	
+
+	
+}
