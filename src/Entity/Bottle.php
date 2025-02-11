@@ -57,7 +57,7 @@ class Bottle
     #[ORM\ManyToMany(targetEntity: Grapes::class, inversedBy: 'bottles')]
     private Collection $grapes;
 
-    #[ORM\Column(type:"string",length: 4)]
+    #[ORM\Column(length: 4)]
     private ?int $year = null;
 
     public function __construct()

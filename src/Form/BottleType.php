@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Bottle;
+use App\Entity\Cellar;
 use App\Entity\Grapes;
 use App\Entity\Region;
 use App\Entity\Country;
@@ -25,12 +26,10 @@ class BottleType extends AbstractType
           	->add('name', TextType::class,[
 				"label"=>"Nom du Domaine"
 		  	])
-			->add('year', NumberType::class,[
+			->add('year', TextType::class,[
 				"label"=>"Millésime",
 				"attr"=>[
-					"minmax" =>4,
-					// "max"=>4,
-					// "placeHolder"=>"Saisir l'année (YYYY)."
+					"placeHolder"=>"Saisir l'année au format (YYYY)."
 				]
 			])
 			  ->add('grapes', EntityType::class, [
@@ -39,6 +38,11 @@ class BottleType extends AbstractType
 				"label"=>"Cépage(s)",
 				'multiple' => true,
 				"expanded" => false,
+			  ])
+			  ->add('cellar', EntityType::class, [
+			     'class' => Cellar::class,
+				'choice_label' => 'name',
+				"label"=>"Cave",
 			  ])
           	->add('region', EntityType::class, [
 				'class' => region::class,
@@ -56,23 +60,23 @@ class BottleType extends AbstractType
 				"mapped"=>false,
 				"multiple"=>false,
 			])
-		  ->add('imageFile', FileType::class,[ //Champ de fichier
-			"mapped"=>True,
-			"required"=>False,
-			"label"=>"Image",
-			'constraints' => [
-			    new File([
-				   'maxSize' => '2M',
-				   'mimeTypes' => [
-					  'image/jpeg',
-					  'image/jpg',
-					  'image/png',
-					  'image/webp',
-				   ],
-				   'mimeTypesMessage' => 'Veuillez télécharger un fichier au format JPEG, JPG, PNG ou WEBP.'
-			    ])
-			]
-		 ])
+			->add('imageFile', FileType::class,[ //Champ de fichier
+				"mapped"=>True,
+				"required"=>False,
+				"label"=>"Image",
+				'constraints' => [
+				new File([
+					'maxSize' => '2M',
+					'mimeTypes' => [
+						'image/jpeg',
+						'image/jpg',
+						'image/png',
+						'image/webp',
+					],
+					'mimeTypesMessage' => 'Veuillez télécharger un fichier au format JPEG, JPG, PNG ou WEBP.'
+				])
+				]
+			])
         ;
     }
 

@@ -4,7 +4,7 @@
 	<link rel="icon" type="image/png" href="{{asset("/img/faviconexplorer.png")}}" sizes="96x96" />
 {% endblock %}
 
-{% block title %}Explorer{% endblock %}
+{% block title %}Catalogue{% endblock %}
 {% block banner %}{% endblock %}
 
 
@@ -29,7 +29,9 @@
 				<div class="description_item">
 					<p>{{bottle.description}}</p>
 				</div>
-				<div class="btn_bloc">
+				<button class="btn_add_cellar"><a href={{path('modify_bottle',{'id':bottle.id})}}>Ajouter ce vin dans ma Cave</a></button>
+
+				{# <div class="btn_bloc">
 				{% if app.user == bottle.user %}
 					<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>
 					<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
@@ -38,7 +40,7 @@
 						<button class="btn_suppr">Supprimer</button>
 					</form>
 				{% endif %}
-				</div>
+				</div> #}
 			</div>	
 		{% endfor %}
 		</div>

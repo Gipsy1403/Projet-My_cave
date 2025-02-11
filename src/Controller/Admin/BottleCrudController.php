@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class BottleCrudController extends AbstractCrudController
 {
@@ -20,16 +21,20 @@ class BottleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name'),
-            TextEditorField::new('description'),
-            TextField::new('year'),
-		  AssociationField::new('cellar')
-            ->setFormTypeOption(
-			'by_reference',false,
-			"multiple",true,
-			"choice_label","name",
-		),
-
+		TextField::new('name', 'Nom du Domaine'),
+		TextEditorField::new('description'),
+		NumberField::new('year','Millésime'),
+		AssociationField::new('region','Région')
+		->setFormTypeOptions([  'by_reference' => false,
+							'multiple' => true,
+							'choice_label' => 'name',
+						]),
+		AssociationField::new('grapes','Cépages')
+		->setFormTypeOptions([  'by_reference' => false,
+							'multiple' => true,
+							'choice_label' => 'name',
+						]),
+		// TextField::new("region","Pays"),
         ];
     }
     

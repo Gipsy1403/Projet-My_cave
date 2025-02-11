@@ -44,7 +44,8 @@ h1{
 	}
 }
 
-#cellar{
+// Formulaires ajout cave, se connecter et s'inscrire, gestion du mot de passe, contact ******************
+#cellar,#login,#user,#reset_password_request_form,#contact{
 	max-width: 500px;
 	margin: auto;
 	padding: 20px;
@@ -70,3 +71,5 @@ h1{
 	}
 	
 }
+
+

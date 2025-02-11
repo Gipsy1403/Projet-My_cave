@@ -24,7 +24,7 @@ class RegionCrudController extends AbstractCrudController
 		->setFormTypeOptions([
 			"label"=>"nom"
 	   ]),
-		AssociationField::new('country')
+		AssociationField::new('country', "Pays")
 		->setFormTypeOptions([
 			"choice_label" =>"name",
 			"label"=>"nom",

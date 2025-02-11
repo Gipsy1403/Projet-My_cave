@@ -16,6 +16,20 @@ class BottleRepository extends ServiceEntityRepository
         parent::__construct($registry, Bottle::class);
     }
 
+    public function findByfilters($value): array
+       {
+           return $this->createQueryBuilder('b')
+		 	->join('v.region', 'r')
+		 	->join('r.pays', 'p')
+               ->andWhere('b.name = :val')
+               ->orderBy('b.name', 'ASC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+
+
+
 //    /**
 //     * @return Bottle[] Returns an array of Bottle objects
 //     */

@@ -4,10 +4,10 @@
 
 {% block body %}
 	{{form_start(contactform)}}
-		{{form_row(contactform.name)}}
-		{{form_row(contactform.email)}}
-		{{form_row(contactform.message)}}
-		{{form_row(contactform.submit)}}
+		<h1>Contactez-nous</h1>
+		<div id="contact">
+		{{form_widget(contactform)}}
 		<button class="btn_form">Envoyer</button>
-	{{form_end(contactform)}} 
+	</div>
+	{{form_end(contactform)}}
 {% endblock %}

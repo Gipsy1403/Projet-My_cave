@@ -1,7 +1,7 @@
 @use "../abstract/variable" as v;
 @use "../abstract/mixins" as m;
 
-// boutons en page d'accueil******************
+// Bienvenue de la page d'accueil******************
 .section_accueil{
 	@include m.flex;
 	width: 80%;
@@ -102,6 +102,3 @@
 		}
 	}
 }
-// .card_wrap:nth-child(even) .cardback {
-// 	background-color: red;
-// }
