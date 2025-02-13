@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Cellar;
 use App\Form\CellarType;
+use App\Repository\BottleRepository;
+use App\Repository\CellarRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,4 +50,25 @@ final class AddCellarController extends AbstractController{
 			 return $this->redirectToRoute('mescaves');
 		  }
 	   }
+
+	//    pour permettre à l'utilisateur d'ajouter une bouteille dans une de ses caves dont il doit choisir
+	#[Route('/mescaves/bottles_add/{ids}/{id}', name: 'bottles_add')]
+	public function BottlesAdd(Cellar $cellar, EntityManagerInterface $manager, BottleRepository $repo,$ids): Response
+	{
+	    $thisTable  = $cellar->getId();    
+	    $bottle  = $repo->find($ids);
+	    
+	    $cellar->addBottle($bottle);
+	  
+	    $manager->persist($cellar);
+	    $manager->flush();
+	    $this->addFlash("success","Votre vin a été ajouté dans votre cave");
+ 
+ 
+	    return $this->redirectToRoute('mes_caves' , [
+		   'id' => $thisTable
+	    ]);
+	}
     }
+
+    

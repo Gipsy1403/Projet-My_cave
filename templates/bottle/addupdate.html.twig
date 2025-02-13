@@ -3,11 +3,11 @@
 {% block title %}Mes Caves{% endblock %}
 
 {% block body %}
-	<h1>{{ isModification ? "Modifier un vin": "Ajouter un vin"}}</h1>
-	{# <div class="form ajout"> #}
+	<h1>{{ isModification ? "Modifier un vin": "Créer un vin"}}</h1>
 		{{form_start(bottleform)}}
-			{{form_widget(bottleform)}}
-			<button class="btn_form">{{ isModification ? "Modifier": "Ajouter"}}</button>
+			{# {{form_widget(bottleform)}} #}
+			{{dump(bottleform)}}
+			<button class="btn_form">{{ isModification ? "Modifier": "Créer"}}</button>
 		{{form_end(bottleform)}}
-	{# </div> #}
+	
 {% endblock %}

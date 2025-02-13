@@ -38,12 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $username = null;
 
     /**
-     * @var Collection<int, Bottle>
-     */
-    #[ORM\OneToMany(targetEntity: Bottle::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $bottles;
-
-    /**
      * @var Collection<int, Cellar>
      */
     #[ORM\OneToMany(targetEntity: Cellar::class, mappedBy: 'user', orphanRemoval: true)]
@@ -63,8 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
      public function __construct()
     {
-        $this->bottles = new ArrayCollection();
-        $this->cellars = new ArrayCollection();
+          $this->cellars = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,36 +142,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): static
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Bottle>
-     */
-    public function getBottles(): Collection
-    {
-        return $this->bottles;
-    }
-
-    public function addBottle(Bottle $bottle): static
-    {
-        if (!$this->bottles->contains($bottle)) {
-            $this->bottles->add($bottle);
-            $bottle->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBottle(Bottle $bottle): static
-    {
-        if ($this->bottles->removeElement($bottle)) {
-            // set the owning side to null (unless already changed)
-            if ($bottle->getUser() === $this) {
-                $bottle->setUser(null);
-            }
-        }
 
         return $this;
     }

@@ -15,21 +15,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class BottleController extends AbstractController{
     #[Route('/bottle/{id}', name: 'modify_bottle')]
     #[Route('/bottle', name: 'add_bottle')]
-    public function index(Bottle $bottle = null,Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Bottle $bottle = null, Request $request, EntityManagerInterface $entityManager): Response
     {
 		if(!$bottle){
 			$bottle=new Bottle;
 		}
-	$form = $this->createForm(BottleType::class,$bottle);
-	$form->handleRequest($request);
-	if($form->isSubmitted() && $form->isValid()){
-			// dd($bottle);
-		$bottle->setUser($this->getUser("id"));
-		$entityManager->persist($bottle);
+		// dd("lulu");
+		$form = $this->createForm(BottleType::class,$bottle);
+		$form->handleRequest($request);
 
+	if($form->isSubmitted() && $form->isValid()){
+		
+		$entityManager->persist($bottle);
 		$entityManager->flush();
 		return $this->redirectToRoute('mescaves');
 	}
+	
 	return $this->render('bottle/addupdate.html.twig', [
 		'bottleform' => $form->createView(), 
 		'isModification' => $bottle->getId() !== null 
@@ -47,4 +48,6 @@ final class BottleController extends AbstractController{
             return $this->redirectToRoute('mescaves');
         }
     }
+
+    
 }

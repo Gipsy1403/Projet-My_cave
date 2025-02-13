@@ -24,7 +24,9 @@ class ContactType extends AbstractType
 		->add('message', TextareaType::class,[
 			"label"=>"Message",
 		])
-	
+		->add('submit', SubmitType::class,[
+			"label"=>"Envoyer",
+		])
         ;
     }
 

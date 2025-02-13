@@ -29,8 +29,13 @@
 				<div class="description_item">
 					<p>{{bottle.description}}</p>
 				</div>
-				<button class="btn_add_cellar"><a href={{path('modify_bottle',{'id':bottle.id})}}>Ajouter ce vin dans ma Cave</a></button>
-
+				{% for cellar in bottle.cellar %}
+				{# {% if cellar.id != app.user.id %} #}
+						
+				<button class="btn_add_cellar"><a href={{ path ("bottles_add",{"ids":bottle.id, "id":cellar.id})}}>Ajouter à ma Cave</a></button>
+					
+				{# {% endif %} #}
+	{% endfor %}
 				{# <div class="btn_bloc">
 				{% if app.user == bottle.user %}
 					<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>

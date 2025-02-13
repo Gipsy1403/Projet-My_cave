@@ -24,17 +24,17 @@ class BottleCrudController extends AbstractCrudController
 		TextField::new('name', 'Nom du Domaine'),
 		TextEditorField::new('description'),
 		NumberField::new('year','Millésime'),
-		AssociationField::new('region','Région')
-		->setFormTypeOptions([  'by_reference' => false,
-							'multiple' => true,
-							'choice_label' => 'name',
-						]),
+		AssociationField::new('region','Région'),
+		// ->setFormTypeOptions([  'by_reference' => false,
+		// 					'multiple' => true,
+		// 					'choice_label' => 'name',
+		// 				]),
 		AssociationField::new('grapes','Cépages')
 		->setFormTypeOptions([  'by_reference' => false,
 							'multiple' => true,
 							'choice_label' => 'name',
 						]),
-		// TextField::new("region","Pays"),
+		
         ];
     }
     

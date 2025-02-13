@@ -16,6 +16,17 @@ class CellarRepository extends ServiceEntityRepository
         parent::__construct($registry, Cellar::class);
     }
 
+    public function findByUserCellar($user): array
+       {
+           return $this->createQueryBuilder('c')
+			->select("c.name")
+               ->Where('c.user = :user')
+               ->setParameter('user', $user)
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+
 //    /**
 //     * @return Cellar[] Returns an array of Cellar objects
 //     */

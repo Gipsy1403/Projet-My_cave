@@ -14,10 +14,13 @@ final class MesCavesController extends AbstractController{
     #[Route('/mes/caves', name: 'mescaves')]
     public function index(BottleRepository $repository,CellarRepository $cellarRepository): Response
     {
-		$user=$this->getUser();
+		
 		// $bottle=$repository->findby(["user"=>$user]);
 		// $cellar=$cellarRepository->findby(["user"=>$user]);
-		
+		// $user=$this->getUser();
+		// $cellar=$cellarRepository->findByUserCellar($user);
+
+
 		$bottle=$repository->findAll();
 		$cellar=$cellarRepository->findAll();
 		
@@ -28,4 +31,6 @@ final class MesCavesController extends AbstractController{
 		  
         ]);
     }
+    
+
 }

@@ -41,8 +41,10 @@ class BottleType extends AbstractType
 			  ])
 			  ->add('cellar', EntityType::class, [
 			     'class' => Cellar::class,
+				// "choices"=>$options["user_cellars"],
 				'choice_label' => 'name',
 				"label"=>"Cave",
+				// "required"=>true,
 			  ])
           	->add('region', EntityType::class, [
 				'class' => region::class,
@@ -84,6 +86,7 @@ class BottleType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Bottle::class,
+		//   "user_cellars" => [],
         ]);
     }
 }

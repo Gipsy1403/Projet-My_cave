@@ -9,16 +9,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ExplorerController extends AbstractController{
-    #[Route('/explorer', name: 'explorer')]
-    public function index(BottleRepository $repository, CellarRepository $cellarRepository): Response
+    #[Route('/explorer/', name: 'explorer')]
+    public function index(BottleRepository $repository): Response
     {
 		$bottle=$repository->findAll();
-		$cellar=$cellarRepository->findAll();
 
 
         return $this->render('explorer/explorer.html.twig', [
 		'bottles' => $bottle,
-		'cellars' => $cellar,
+
         ]);
     }
 }

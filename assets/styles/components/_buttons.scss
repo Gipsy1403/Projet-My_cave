@@ -74,3 +74,19 @@ button{
 .btn_form{
 	margin: auto;
 }
+
+//  Bouton ajouter un vin du catalogue
+.btn_add_cellar{
+	a{
+		color: white;
+	}
+}
+
+// Bouton Choisir le nom de la cave souhaitée dans mes caves
+.btn_choice{
+	background-color: white;
+	color: v.$first-color;
+	&:hover{
+		color: white;
+	}
+}

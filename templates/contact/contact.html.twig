@@ -6,7 +6,10 @@
 	{{form_start(contactform)}}
 		<h1>Contactez-nous</h1>
 		<div id="contact">
-		{{form_widget(contactform)}}
+		{{form_row(contactform.name)}}
+		{{form_row(contactform.email)}}
+		{{form_row(contactform.message)}}
+		{{form_row(contactform.submit)}}
 		<button class="btn_form">Envoyer</button>
 	</div>
 	{{form_end(contactform)}}

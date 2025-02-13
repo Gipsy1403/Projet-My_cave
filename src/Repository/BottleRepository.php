@@ -16,13 +16,19 @@ class BottleRepository extends ServiceEntityRepository
         parent::__construct($registry, Bottle::class);
     }
 
-    public function findByfilters($value): array
+    public function findByOrderAsc($value): array
        {
            return $this->createQueryBuilder('b')
-		 	->join('v.region', 'r')
-		 	->join('r.pays', 'p')
-               ->andWhere('b.name = :val')
                ->orderBy('b.name', 'ASC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+	
+	  public function findByOrderDesc($value): array
+       {
+           return $this->createQueryBuilder('b')
+               ->orderBy('b.name', 'DESC')
                ->getQuery()
                ->getResult()
            ;

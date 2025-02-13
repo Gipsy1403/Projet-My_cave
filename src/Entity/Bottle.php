@@ -37,9 +37,6 @@ class Bottle
     private ?DateTimeImmutable $updatedAt = null;
     
 // fin images
-    #[ORM\ManyToOne(inversedBy: 'bottles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'bottles')]
     #[ORM\JoinColumn(nullable: false)]
@@ -91,18 +88,6 @@ class Bottle
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
 
         return $this;
     }

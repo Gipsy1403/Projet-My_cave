@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix de la cave{% endblock %}
+{# présentation des vins par rapport à la cave choisie par l'utilisateur #}
+{% block body %}
+	{% for bottle in bottles %}
+				<div class="card_complet">
+					<div class="main_article">
+						<img class="card_left" src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
+						<div class="card_right">
+							<h3>{{bottle.name}}</h3>
+							<h4>{{bottle.year}}</h4>
+							<p> {% for grape in bottle.grapes %}
+									{{ grape.name }}{% if not loop.last %}, {% endif %}
+								{% endfor %}
+							</p>
+						</div>
+					</div>
+					<p class="card_description" >{{bottle.description}}</p>
+						<div class="card_btn">
+							<div class="btn_bloc">
+							{# {% if app.bottle == cellar.bottle %} #}
+								<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>
+								<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bottle.id)}}">
+									<button class="btn_suppr">Supprimer</button>
+								</form>
+							{# {% endif %} #}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+{% endblock %}
