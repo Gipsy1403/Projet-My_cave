@@ -51,7 +51,7 @@ final class AddCellarController extends AbstractController{
 		  }
 	   }
 
-	//    pour permettre à l'utilisateur d'ajouter une bouteille dans une de ses caves dont il doit choisir
+	//    Permettre à l'utilisateur d'ajouter une bouteille dans une de ses caves dont il doit choisir
 	#[Route('/mescaves/bottles_add/{ids}/{id}', name: 'bottles_add')]
 	public function BottlesAdd(Cellar $cellar, EntityManagerInterface $manager, BottleRepository $repo,$ids): Response
 	{

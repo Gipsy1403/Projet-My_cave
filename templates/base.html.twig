@@ -23,13 +23,15 @@
     <body>
 {# Barre de navigation #}
 
-    		<header>
-			<nav>
+	<header>
+		<nav>
+			<div class="logo_message">
 				<a class="nav_logo" href={{path ("home")}}><img src="{{ asset('img/logo.png') }}" alt="logo"></a>
-				{# <div class="menu_dropdown"> #}
-				<ul>
 					{% if is_granted('ROLE_USER') %}
-						<li class="welcome_login"><em>Bienvenue à toi {{ app.user.firstname |capitalize}} !</em></li>
+				<div class="welcome_login"><em>Bienvenue à toi {{ app.user.firstname |capitalize}} !</em></div>
+			</div>
+			<div class="menu_dropdown">
+				<ul>
 					{% endif %}
 					<li><a class="{% if app.request.attributes.get('_route') == 'home' %} active {% endif %}" href={{path('home')}}>Accueil</a></li>
 					<li><a class="{% if app.request.attributes.get('_route') == 'explorer' %} active {% endif %}" href={{path ('explorer')}}>Catalogue</a></li>
@@ -51,9 +53,9 @@
 
 				</ul>
 				<i class="fa-solid fa-bars"></i>
-				{# </div> #}
-			</nav>
-		</header>
+			</div>
+		</nav>
+	</header>
 
 {# Bannière avec logo vertical #}
         {% block banner %}
@@ -94,26 +96,30 @@
 	   {% block footer %}
 	   	<footer>
 			<div class="footer">
-				<div class="footbar">
-					<h4>Menu</h4>
-					<a href={{path ("home")}}>Accueil</a>
-					<a href={{path ('explorer')}}>Catalogue</a>
-					<a href={{path ('mescaves')}}>Mes Caves</a>
-				</div>
-				<div class="contact">
-					<h4><a href={{path('contact')}}>Nous contacter</a></h4>
+				<div class="foot_resp_left">
+					<div class="footbar">
+						<h4>Menu</h4>
+						<a href={{path ("home")}}>Accueil</a>
+						<a href={{path ('explorer')}}>Catalogue</a>
+						<a href={{path ('mescaves')}}>Mes Caves</a>
+					</div>
+					<div class="contact">
+						<h4><a href={{path('contact')}}>Nous contacter</a></h4>
+					</div>
 				</div>
 				<div class="copyright">
 					<a class="logofoot" href={{path ("home")}}><img src="{{ asset('img/logo-white.png') }}" alt="logo"></a>
 					<p>© - 2025 - My Cave</p>
 				</div>
-				<div class="about">
-					<h4>A propos de My Cave</h4>
-					<a href={{path ("mentions")}}>Mentions légales</a>
-				</div>
-				<div class="reglementation">
-					<h4>Réglementation</h4>
-					<a href="#https://www.vindefrance.com/pro/reglementation">Anivin de France</a>
+				<div class="foot_resp_right">
+					<div class="about">
+						<h4>A propos de My Cave</h4>
+						<a href={{path ("mentions")}}>Mentions légales</a>
+					</div>
+					<div class="reglementation">
+						<h4>Réglementation</h4>
+						<a href="#https://www.vindefrance.com/pro/reglementation">Anivin de France</a>
+					</div>
 				</div>
 			</div>
 			<p class="exces"><em>"L'abus d'alcool est dangereux pour la santé. À consommer avec modération."</em></p>

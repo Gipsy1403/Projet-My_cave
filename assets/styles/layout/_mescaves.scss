@@ -23,7 +23,7 @@
 			display: flex;
 			justify-content: center;
 			margin: 1.5rem 15rem;
-
+			
 		}
 	}
 	.add_wine{
@@ -51,6 +51,16 @@
 
 
 // Section gestion de mes caves (ajout, modif, suppr)**********
+#mescaves{
+	h2{
+		background-color: v.$snd-color;
+		padding: 10px 50px;
+		color: white;
+		border-radius: 10px;
+		margin-top: 100px;
+
+	}
+}
 .cellar_management{
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(1fr));

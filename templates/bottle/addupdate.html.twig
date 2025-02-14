@@ -5,9 +5,10 @@
 {% block body %}
 	<h1>{{ isModification ? "Modifier un vin": "Créer un vin"}}</h1>
 		{{form_start(bottleform)}}
-			{# {{form_widget(bottleform)}} #}
-			{{dump(bottleform)}}
+			{{form_widget(bottleform)}}
+			{# {{dump(bottleform)}} #}
 			<button class="btn_form">{{ isModification ? "Modifier": "Créer"}}</button>
+			{# <button>Valider</button> #}
 		{{form_end(bottleform)}}
 	
 {% endblock %}

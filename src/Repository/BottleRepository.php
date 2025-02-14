@@ -15,8 +15,8 @@ class BottleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Bottle::class);
     }
-
-    public function findByOrderAsc($value): array
+// Affichage du bouton par tri ordre alphabétique des noms des domaines
+    public function findByOrderAsc(): array
        {
            return $this->createQueryBuilder('b')
                ->orderBy('b.name', 'ASC')
@@ -24,8 +24,8 @@ class BottleRepository extends ServiceEntityRepository
                ->getResult()
            ;
        }
-	
-	  public function findByOrderDesc($value): array
+// Affichage du bouton par tri ordre descendant alphabétique des noms des domaines
+	  public function findByOrderDesc(): array
        {
            return $this->createQueryBuilder('b')
                ->orderBy('b.name', 'DESC')
@@ -34,7 +34,14 @@ class BottleRepository extends ServiceEntityRepository
            ;
        }
 
-
+	  public function findByYear($year): array
+       {
+           return $this->createQueryBuilder('b')
+               ->orderBy('b.year', 'Millesime')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 
 //    /**
 //     * @return Bottle[] Returns an array of Bottle objects

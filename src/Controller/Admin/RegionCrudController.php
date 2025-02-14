@@ -20,10 +20,10 @@ class RegionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-		TextField::new("name", "Régions")
-		->setFormTypeOptions([
-			"label"=>"nom"
-	   ]),
+		TextField::new("name", "Régions"),
+	// 	->setFormTypeOptions([
+	// 		"label"=>"nom"
+	//    ]),
 		AssociationField::new('country', "Pays"),
 		
         ];

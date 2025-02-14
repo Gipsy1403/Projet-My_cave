@@ -10,9 +10,18 @@
 
 {% block body %}
 <section>
-	<div class="filters">
+	{# <div class="filter">
 		<h2>Filtres</h2>
-	</div>
+		<a href={{path('filtres' , {'filter': 'ASC'} )}}>Noms Vins de A-Z</a>
+		<a href={{path('filtres' , {'filter': 'DESC'} )}}>Noms Vins de Z-A</a>
+		<div class="filter">
+		{{form_start(filtreform)}} #}
+			{# {{ form_row(filtreform.puissance) }}
+			{{ form_row(filtreform.race) }} #}
+			{# {{ form_widget(filtreform) }}
+			<button>Filtrer</button>
+		{{form_end(filtreform)}}
+    </div> #}
 	<article>
 		<div class="container_explorer">
 		{% for bottle in bottles %}

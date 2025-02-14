@@ -8,6 +8,7 @@ use App\Entity\Grapes;
 use App\Entity\Region;
 use App\Entity\Country;
 use Doctrine\ORM\Mapping\Entity;
+use EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -39,13 +40,13 @@ class BottleType extends AbstractType
 				'multiple' => true,
 				"expanded" => false,
 			  ])
-			  ->add('cellar', EntityType::class, [
-			     'class' => Cellar::class,
-				// "choices"=>$options["user_cellars"],
-				'choice_label' => 'name',
-				"label"=>"Cave",
-				// "required"=>true,
-			  ])
+			//   ->add('cellar', EntityType::class, [
+			//      'class' => Cellar::class,
+			// 	// "choices"=>$options["user_cellars"],
+			// 	'choice_label' => 'name',
+			// 	"label"=>"Cave",
+			// 	// "required"=>true,
+			//   ])
           	->add('region', EntityType::class, [
 				'class' => region::class,
 				'choice_label' => 'name',

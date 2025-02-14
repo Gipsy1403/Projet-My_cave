@@ -19,9 +19,8 @@
 					<a class="btn_add" id="add_cellar" href={{ path ('add_cellar')}}>Créer une Cave</a>
 				{% endif %}
 				<li><strong>2° Ajoutez vos bouteilles</strong> : Renseignez le nom, le millésime, le cépage et plus encore.</li>
-				<li><strong>3° Classez et organisez</strong> : Filtrez par type, région ou année pour mieux vous y retrouver.</li>
-				<li><strong>4° Explorez d’autres caves</strong> : Découvrez les collections des autres passionnés.</li>
-				<li><strong>5° Mettez à jour votre cave</strong> : Modifiez, ajoutez des notes ou supprimez des bouteilles facilement.</li>
+				<li><strong>3° Explorez notre catalogue</strong> : Découvrez un catalogue de vins mis à votre disposition.</li>
+				<li><strong>4° Mettez à jour votre cave</strong> : Modifiez ou supprimez des bouteilles facilement.</li>
 			</ul>
 		</div>
 		<div class="add_wine">
@@ -40,7 +39,6 @@
 	<section id="mescaves">
 			<h2>Mes caves</h2>
 		<div class="cellar_management">
-
 			{% for cellar in cellars %}
 				<div class="container_cellar">
 					{% if app.user == cellar.user %}
@@ -61,11 +59,9 @@
 			{% endfor %}
 		</div>
 
-		<div class="filters">
-			<h2>Filtres</h2>
-		</div>
 		<article>
 		
+			<h2>Mes Vins</h2>
 			<div class="container_mescaves">
 			{% for bottle in bottles %}
 				<div class="card_complet">

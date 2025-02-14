@@ -2,14 +2,20 @@
 @use "../abstract/mixins" as m;
 
 nav{
-	@include m.flex(space-around);
-	
+	@include m.flex(space-between);
+	.logo_message{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 40%;
+	}
 	
 	ul{
 		padding: 0;
 		// @include m.flex;
 		display: flex;
 		position: relative;
+	
 	}
 	li{
 		display: flex;
@@ -30,7 +36,8 @@ nav{
  }
  .fa-bars{
 	display: none;
-	font-size: 1.5em;
+	font-size: 2rem;
+	color: v.$first-color;
 
  }
  .fa-right-from-bracket{
@@ -67,8 +74,7 @@ nav{
 	 }
 	.slogan{
 		color: v.$first-color;
-		// text-align: center;
-		display: block;
+		// display: block;
 		@include m.flex;
 		height: 210px;
 		text-shadow: 0 2px 3px white;

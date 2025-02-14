@@ -2,6 +2,138 @@
 @use "../abstract/mixins" as m;
 
 
-@media screen and (max-width:700px) {
-      
+@media screen and (max-width:730px) {
+	.fa-bars{
+		display: block;
+		margin-left: 2rem;
+	}
+	nav{
+		ul{
+			display: none;
+			width: 50%;
+		}
+	}
+	.menu_dropdown:hover ul{
+		display: block;
+		position: absolute;
+		top: 3rem;
+		left: 1rem;
+		background-color: white;
+	}
+	ul li{
+		padding: 0.5rem;
+		justify-content: start;
+
+	}
+	li:hover{
+		background-color: #885c7ec1;
+	}
+	.logovertical{
+		display: none;
+	}
+	.section_accueil{
+		width: 100%;
+		.welcome{
+			width: 100%;
+			margin: 0 3rem;
+		}
+	}
+	.section_accueil{
+		display: inline-flex;
+		flex-direction: column;
+		.button_accueil{
+			display: flex;
+			justify-content: center;
+			height: 250px;
+			.btn_inscription{
+				max-width: 150px;
+				width: 100%;
+				max-height: 150px;
+				height: 50%;
+				bottom:1rem;
+			}
+			.btn_login{
+				max-width: 200px;
+				width: 100%;
+				max-height: 170px;
+				height: 50%;
+				top:1.5rem;
+				left:4rem;
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width:730px) {
+	.title_fourcard{
+		font-size: 1.2rem;
+	}
+	
+}
+
+@media screen and (max-width:570px) {
+     nav{
+	.logo_message{
+		padding-left: 1rem;
+		text-align: center;
+		font-size: 0.8rem;
+	} 
+}
+	.footer{
+		flex-direction: column;
+		line-height: 1.5rem;
+		
+	 }
+	 .foot_resp_left, .foot_resp_right{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	 }
+	 .copyright{
+		width: 100%;
+	 }
+	 .exces{
+		font-size: 0.2rem;
+		padding-top: 1.5rem;
+	 }
+	 .title_fourcard{
+		font-size: 1rem;
+	}
+	
+}
+@media screen and (max-width:470px) {
+	.banner{
+		.slogan{
+		text-align: center;
+
+		}
+	}
+	.section_accueil{
+		.welcome{
+			h1{
+				display: inline-block
+			}
+		}
+	}
+	.title_fourcard{
+		font-size: 1rem;
+		margin: 3rem 2rem;
+	}
+	.card_container{
+		margin: 2rem;
+	}
+	
+}
+@media screen and (max-width:420px) {
+
+	 .foot_resp_right{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+	 }
 }

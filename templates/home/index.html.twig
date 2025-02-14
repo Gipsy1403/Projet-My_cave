@@ -6,7 +6,7 @@
 
 	<section class="section_accueil">
 		<div class="welcome">
-			<h1>Bienvenue sur<strong> My Cave</strong></h1>
+			<h1>Bienvenue sur  <strong> My Cave</strong></h1>
 			<p>Gérez facilement votre <strong>cave à vin virtuelle</strong> : ajoutez, classez et partagez vos bouteilles en quelques clics.</p>
 			<p>Passionné ou collectionneur, créez votre espace personnalisé et explorez de nouvelles références.</p>
 			<p>Votre cave, toujours à portée de main !</p>
@@ -22,7 +22,7 @@
 	</section>
 	<section>
 		{# les 4 derniers vins ajoutés #}
-		<h2>Voici les dernières entrées</h2>
+		<h2 class="title_fourcard">Voici les dernières entrées</h2>
 		<div class="card_container">
 		{% for bottle in bottles %}
 			<div class="card_wrap">
@@ -30,12 +30,13 @@
 					<div class="card">
 						<div class="cardfront">
 							<img src={{asset('images/' ~ bottle.imageName )}} alt="Bouteille de vin">
-							<h3>{{bottle.name}}</h3>
-							<h4>{{bottle.year}}</h4>
-							<p> {% for grape in bottle.grapes %}
+							<h3 class="name_card">{{bottle.name}}</h3>
+							<h4 class="year_card">{{bottle.year}}</h4>
+							<p class="grape_card"> {% for grape in bottle.grapes %}
         							{{ grape.name }}{% if not loop.last %}, {% endif %}
-   								{% endfor %}
+   								{% endfor %} {# met une virgule avt le dernier élement #}
 							</p>
+							<p class="region_card">{{ bottle.region.name }}</p>
                         			<i class="fa-regular fa-circle-right"></i>
 						</div>
 							
