@@ -7,6 +7,7 @@
 	width: 100%;
 	color: v.$first-color;
 	padding-top: 3rem;
+// description des règles pour guider l'utilisateur
 	.rules{
 		line-height: 1.5;
 		margin: 3rem;
@@ -19,6 +20,7 @@
 			padding-bottom: 1rem;
 			color: v.$snd-color;
 		}
+// ajout d'une cave
 		#add_cellar{
 			display: flex;
 			justify-content: center;
@@ -26,6 +28,7 @@
 			
 		}
 	}
+// ajout d'un vin
 	.add_wine{
 		text-align: center;
 		color: v.$first-color;
@@ -61,6 +64,7 @@
 
 	}
 }
+// gestion des caves
 .cellar_management{
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(1fr));

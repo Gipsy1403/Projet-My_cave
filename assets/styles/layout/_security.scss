@@ -1,6 +1,6 @@
 @use "../abstract/variable" as v;
 @use "../abstract/mixins" as m;
-
+// pour récupérer le mot de passe si ce dernier est oublié
 .forgotpassword{
 	font-size: 0.8em;
 	&:hover{

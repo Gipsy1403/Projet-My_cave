@@ -1,18 +1,27 @@
 @use "../abstract/variable" as v;
 @use "../abstract/mixins" as m;
 
+// Barre de navigation
 nav{
 	@include m.flex(space-between);
+	width: 100%;
+	// logo et le message de bienvenues lorsque l'utilisateur est connecté
 	.logo_message{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 40%;
+		.nav_logo:hover{
+			transform:none;	
+		}
+		.welcome_login{
+		    font-size: 1.2em;
+		    font-weight: bold;
+		    color: v.$third-color;
+		}
 	}
-	
 	ul{
 		padding: 0;
-		// @include m.flex;
 		display: flex;
 		position: relative;
 	
@@ -30,25 +39,17 @@ nav{
 			transform:scale(1.2);	
 		}
 	}
-	.nav_logo:hover{
-		transform:none;	
-	}
  }
+//  bouton menu-burger
  .fa-bars{
 	display: none;
 	font-size: 2rem;
 	color: v.$first-color;
 
  }
+//  bouton se déconnecter
  .fa-right-from-bracket{
 	font-size: 1.4em;
-	color: v.$third-color;
-
-
- }
- .welcome_login{
-	font-size: 1.2em;
-	font-weight: bold;
 	color: v.$third-color;
  }
 

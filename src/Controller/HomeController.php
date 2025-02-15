@@ -17,4 +17,16 @@ final class HomeController extends AbstractController{
             'bottles' => $bottle,
         ]);
     }
+
+    #[Route('view/bottles/{id}', name: 'explorer_bottle')]
+    public function viewBottle(int $id, BottleRepository $repository): Response
+    {
+		// Récupère la bouteille par son identifiant
+	    $bottle = $repository->findOneBy(["id"=>$id]); 
+// dump($bottle);
+// die();
+        return $this->render('explorer/viewbottle.html.twig', [
+            'bottles' => $bottle,
+        ]);
+    }
 }

@@ -4,10 +4,11 @@
 
 {% block body %}
     <form method="post">
-        {% if error %}
+ {# message si la connection échoue #}
+        {% if error %} 
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
-
+{# Affiche un message de bienvenue dès que l'utilisateur s'est connecté #}
         {% if app.user %}
             <div class="authentification_login">
                 Bienvenue à toi {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
@@ -35,7 +36,7 @@
 			   <label for="_remember_me">Remember me</label>
 		    </div>
 		#}
-		
+{# récupération du mot de passe oublié #}
 			   <a  class="forgotpassword" href={{ path ("app_forgot_password")}}>Mot de passe oublié ?</a>
 	   </div>
 		<button class="btn_form" type="submit">

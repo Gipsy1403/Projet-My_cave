@@ -22,7 +22,6 @@
     </head>
     <body>
 {# Barre de navigation #}
-
 	<header>
 		<nav>
 			<div class="logo_message">
@@ -36,13 +35,6 @@
 					<li><a class="{% if app.request.attributes.get('_route') == 'home' %} active {% endif %}" href={{path('home')}}>Accueil</a></li>
 					<li><a class="{% if app.request.attributes.get('_route') == 'explorer' %} active {% endif %}" href={{path ('explorer')}}>Catalogue</a></li>
 					<li><a class="{% if app.request.attributes.get('_route') == 'mescaves' %} active {% endif %}" href={{path('mescaves')}}>Mes Caves</a></li>
-					{# {% if not is_granted('ROLE_USER') %}
-						<li><a href={{path('app_login')}}>Se connecter</a></li>
-						<li><a href={{path('app_register')}}>S'inscrire</a></li>
-						{% else %}
-							<li><a href="">Ajouter</a></li>
-							<li><a href={{path('app_logout')}}>Se déconnecter</a></li>
-					{% endif %} #}
 					{% if not is_granted('ROLE_ADMIN') %}
 						{% else %}
 							<li><a href={{path ("admin")}}>Tableau de Bord</a></li>

@@ -3,7 +3,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-
+	{# Message de bienvenue #}
 	<section class="section_accueil">
 		<div class="welcome">
 			<h1>Bienvenue sur  <strong> My Cave</strong></h1>
@@ -11,12 +11,11 @@
 			<p>Passionné ou collectionneur, créez votre espace personnalisé et explorez de nouvelles références.</p>
 			<p>Votre cave, toujours à portée de main !</p>
 		</div>
+		{# boutons de connection et d'inscription #}
 		{% if not is_granted('ROLE_USER') %}
 			<div class="button_accueil">
 				<a class="btn_inscription" href={{path('app_register')}}>S'inscrire</a>
 				<a class="btn_login" href={{path('app_login')}}>Se connecter</a>
-				{# {% else %}
-					<li><a href={{path('app_logout')}}>Se déconnecter</a></li> #}
 			</div>
 		{% endif %}
 	</section>
@@ -38,15 +37,11 @@
 							</p>
 							<p class="region_card">{{ bottle.region.name }}</p>
                         			<i class="fa-regular fa-circle-right"></i>
-						</div>
-							
-						{# <div class="cardback">
-							<p>{{bottle.description|slice(0,500)~"..."}}</p>
-						</div> #}
+						</div>	
 						<div class="cardback">
 						<p>{{ bottle.description|slice(0, 280) ~ (bottle.description|length > 280 ? '...' : '') }}</p>
 						{% if bottle.description|length > 280 %}
-							<a href="#" class="see_more">Voir plus...</a>
+							<a href={{path ("explorer_bottle", {id: bottle.id})}} class="see_more">Voir plus...</a>
 						{% endif %}
 						</div>
 

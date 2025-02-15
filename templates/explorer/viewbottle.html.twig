@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block linkfavicon %}
+	<link rel="icon" type="image/png" href="{{asset("/img/faviconexplorer.png")}}" sizes="96x96" />
+{% endblock %}
+
+{% block title %}Catalogue{% endblock %}
+{% block banner %}{% endblock %}
+
+
+{% block body %}
+
+	<article>
+	<h1>Descriptif du vin</h1>
+		
+		{% for bottle in bottles %}
+			<div class="card_description">
+				<img class="card_wine" src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
+				<div class="card_explorer">
+					<h3>{{bottle.name}}</h3>
+					<h4>{{bottle.year}}</h4>
+					<p> {% for grape in bottle.grapes %}
+							{{ grape.name }}{% if not loop.last %}, {% endif %}
+						{% endfor %}
+					</p>
+					<p class="region_card">{{ bottle.region.name }}</p>
+				</div>
+				<div class="description_item">
+					<p>{{bottle.description}}</p>
+				</div>
+			</div>	
+		{% endfor %}
+		
+	</article>
+
+{% endblock %}

@@ -9,7 +9,7 @@
 
 
 {% block body %}
-
+{# Présentation des règles pour créer des caves et des vins #}
 	<section id ="container_add">
 		<div class="rules">
 			<h1>Gérez votre cave en toute simplicité !</h1>
@@ -35,7 +35,7 @@
 		</div>
 	</section>
 	
-	
+	{#afficher les caves créées  #}
 	<section id="mescaves">
 			<h2>Mes caves</h2>
 		<div class="cellar_management">
@@ -58,9 +58,8 @@
 				</div>
 			{% endfor %}
 		</div>
-
+{# afficher les cartes des vins créés ou ajoutés #}
 		<article>
-		
 			<h2>Mes Vins</h2>
 			<div class="container_mescaves">
 			{% for bottle in bottles %}
@@ -74,6 +73,7 @@
 									{{ grape.name }}{% if not loop.last %}, {% endif %}
 								{% endfor %}
 							</p>
+							<p class="region_card">{{ bottle.region.name }}</p>
 						</div>
 					</div>
 					<p class="card_description" >{{bottle.description}}</p>

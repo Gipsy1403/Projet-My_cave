@@ -1,8 +1,32 @@
 @use "../abstract/variable" as v;
 @use "../abstract/mixins" as m;
 
+@media screen and (max-width: 768px) {
+// les vins du catalogues
+	.card_description {
+		flex-direction: column;
+		text-align: center;
+		padding: 1.5rem;
+	}
+
+	.card_explorer {
+		width: 80%;
+	}
+
+	.description_item {
+		width: 90%;
+		padding: 1.5rem;
+	}
+
+	img {
+		width: 150px;
+		height: 220px;
+	}
+}
+
 
 @media screen and (max-width:730px) {
+// Barre de navigation
 	.fa-bars{
 		display: block;
 		margin-left: 2rem;
@@ -28,19 +52,25 @@
 	li:hover{
 		background-color: #885c7ec1;
 	}
+// Bannière de l'accueil
 	.logovertical{
 		display: none;
 	}
+	// .section_accueil{
+	// 	width: 100%;
+	// 	.welcome{
+	// 		width: 100%;
+	// 		margin: 0 3rem;
+	// 	}
+	// }
+// Message de bienvenue de l'accueil + boutons s'inscrire et se connecter
 	.section_accueil{
-		width: 100%;
+		display: inline-flex;
+		flex-direction: column;
 		.welcome{
 			width: 100%;
 			margin: 0 3rem;
 		}
-	}
-	.section_accueil{
-		display: inline-flex;
-		flex-direction: column;
 		.button_accueil{
 			display: flex;
 			justify-content: center;
@@ -66,6 +96,7 @@
 }
 
 @media screen and (max-width:730px) {
+// titre des cartes présentent à l'accueil
 	.title_fourcard{
 		font-size: 1.2rem;
 	}
@@ -73,6 +104,7 @@
 }
 
 @media screen and (max-width:570px) {
+// Barre de navigation
      nav{
 	.logo_message{
 		padding-left: 1rem;
@@ -80,6 +112,7 @@
 		font-size: 0.8rem;
 	} 
 }
+// Pied de page (footer)
 	.footer{
 		flex-direction: column;
 		line-height: 1.5rem;
@@ -104,12 +137,14 @@
 	
 }
 @media screen and (max-width:470px) {
+// Bannière de l'accueil
 	.banner{
 		.slogan{
 		text-align: center;
 
 		}
 	}
+// message de Bienvenue de l'accueil
 	.section_accueil{
 		.welcome{
 			h1{
@@ -117,6 +152,7 @@
 			}
 		}
 	}
+// titre des cartes situées à l'accueil
 	.title_fourcard{
 		font-size: 1rem;
 		margin: 3rem 2rem;
@@ -127,7 +163,7 @@
 	
 }
 @media screen and (max-width:420px) {
-
+// pied de page (footer]
 	 .foot_resp_right{
 		width: 100%;
 		display: flex;

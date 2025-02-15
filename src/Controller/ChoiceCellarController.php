@@ -12,9 +12,9 @@ final class ChoiceCellarController extends AbstractController{
     public function index(int $id,CellarRepository $repository): Response
     {
 	$cellar=$repository->find($id);
-	// if (!$cellar){
-	// 	throw $this->createNotFoundException(("Cave non trouvée."));
-	// }
+	if (!$cellar){
+		throw $this->createNotFoundException(("Cave non trouvée."));
+	}
 	$bottle=$cellar->getBottles();
      return $this->render('mes_caves/mescaves.html.twig', [
 		'cellars'=>$cellar,

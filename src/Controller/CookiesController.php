@@ -16,14 +16,14 @@ final class CookiesController extends AbstractController{
         ]);
     }
 
-//     public function index(Request $request): Response
-// 	{
-//    		$cookieConsent = $request->cookies->get('cookie_consent');
-//     		if ($cookieConsent) {
-// 			$this->addFlash("success", "Les cookies sont acceptés !");
-// 		}else{
-// 			$this->addFlash("alert", "Les cookies n'ont pas été acceptés !");
-// 		}
-//     	return $this->render('home/index.html.twig');
-// 	}
+    public function index(Request $request): Response
+	{
+   		$cookieConsent = $request->cookies->get('cookie_consent');
+    		if ($cookieConsent) {
+			$this->addFlash("success", "Les cookies sont acceptés !");
+		}else{
+			$this->addFlash("alert", "Les cookies n'ont pas été acceptés !");
+		}
+    	return $this->render('home/index.html.twig');
+	}
 }

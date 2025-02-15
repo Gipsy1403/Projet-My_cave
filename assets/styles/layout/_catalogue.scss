@@ -1,39 +1,58 @@
 @use "../abstract/variable" as v;
 @use "../abstract/mixins" as m;
 
-.container_explorer{
+// Catalogue des vins
+
+.container_explorer {
 	display: grid;
-	grid-template-columns: repeat(1fr);
+	grid-template-columns: 1fr; 
 	padding: 3rem;
-	
-	.card_description{
+	grid-gap: 20px;
+// la carte complete du vin
+	.card_description {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 		width: 100%;
+		border-radius: 30px;
+		box-shadow: 0 0 10px black;
+		overflow: hidden;
+		padding: 2rem;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
-	img{
+// l'image du vin
+	img {
 		width: 200px;
 		height: 300px;
 		object-fit: cover;
-		box-shadow: 0 0 10px black;
+		box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.626);
 	}
-	.card_explorer{
+//  etiquettes des vins dans le catalogue
+	.card_explorer {
 		background-color: v.$first-color;
 		border-radius: 10px;
-		padding: 3rem 0;
+		padding: 2rem;
 		text-align: center;
-		color:white;
-		width: 20%;
-		h3, h4{
+		color: white;
+		width: 30%; 
+		min-width: 250px;
+
+		h3, h4 {
 			margin-bottom: 1rem;
 		}
 	}
-	.description_item{
-		width: 40%;
+//  description des vins dans le catalogue
+	.description_item {
+		width: 50%;
 		padding: 2rem;
+		background-color: rgba(255, 255, 255, 0.355);
+		border-radius: 20px;
 	}
-	
 
-	
+	.card_description:nth-child(even) {
+		background-color: white;
+	}
+
 }
+
