@@ -15,6 +15,7 @@
 			<h1>Gérez votre cave en toute simplicité !</h1>
 			<ul>
 				<li><strong>1° Créez votre cave</strong> : Donnez-lui un nom et commencez à l’organiser. Vous pouvez créer plusieurs caves si vous le souhaitez !</li>
+			{# création d'une cave #}
 				{% if is_granted('ROLE_USER') %}
 					<a class="btn_add" id="add_cellar" href={{ path ('add_cellar')}}>Créer une Cave</a>
 				{% endif %}
@@ -25,7 +26,7 @@
 		</div>
 		<div class="add_wine">
 			<p>Accédez à votre collection où que vous soyez et profitez pleinement de votre passion du vin !</p>
-
+		{# création d'un vin #}
 			{% if is_granted('ROLE_USER') %}
 				<a class="btn_add" href={{ path ('add_bottle')}}>Créer un Vin</a>
 				{% else %}
@@ -35,65 +36,60 @@
 		</div>
 	</section>
 	
-	{#afficher les caves créées  #}
+{# affiche les caves créées #}
 	<section id="mescaves">
-			<h2>Mes caves</h2>
-		<div class="cellar_management">
-			{% for cellar in cellars %}
-				<div class="container_cellar">
-					{% if app.user == cellar.user %}
-					<div class="card_cellar">
-						<h3>{{cellar.name}}</h3>
-					</div>
-					<div class="btn_line">
-						<button class="btn_choice"><a href={{path('choicecellar',{'id':cellar.id})}}>Choisir</button> {# bouton pour choisir le nom de la cave si l'utilisateur en a plusieurs #}
-						<button class="btn_modify_line"><a href={{path('modify_cellar',{'id':cellar.id})}}>Modifier</a></button>
-						<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_cellar',{'id': cellar.id})}}">
-							<input type="hidden" name="_method" value="delete">
-							<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ cellar.id)}}">
-							<button class="btn_suppr">Supprimer</button>
-						</form>
-					</div>
-					{% endif %}
-				</div>
-			{% endfor %}
+		<h2>Mes caves</h2>
+		<div class="selectcellar">
+			<form method="get" action="{{ path('mescaves_show') }}">
+				<label for="selectCellar">Choisissez une cave :</label>
+				<select id="selectCellar" name="cellarId" onchange="this.form.submit()">
+					{% for cellar in cellars %}
+						<option value="{{ cellar.id }}" {% if selectedCellar and selectedCellar.id == cellar.id %}selected{% endif %}>
+							{{ cellar.name }}
+						</option>
+					{% endfor %}
+				</select>
+			</form>
 		</div>
-{# afficher les cartes des vins créés ou ajoutés #}
-		<article>
-			<h2>Mes Vins</h2>
-			<div class="container_mescaves">
-			{% for bottle in bottles %}
-				<div class="card_complet">
-					<div class="main_article">
-						<img class="card_left" src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
-						<div class="card_right">
-							<h3>{{bottle.name}}</h3>
-							<h4>{{bottle.year}}</h4>
-							<p> {% for grape in bottle.grapes %}
+{# Visualisation des vins de la cave de l'utilisateur #}
+		<h2>Mes Vins dans la cave "{{ selectedCellar.name }}"</h2>
+		<div class="container_mescaves">
+			{% if bottles is empty %}
+				<p>Il n'existe aucun vin dans cette cave.</p>
+			{% else %}
+			{# présentation des vins via des cartes #}
+				{% for bottle in bottles %}
+					<div class="card_complet">
+						<div class="main_article">
+							<img class="card_left" src="{{ asset('images/' ~ bottle.imageName) }}" alt="Photographie d'une bouteille de vin">
+							<div class="card_right">
+							<h3>{{ bottle.name }}</h3>
+							<h4>{{ bottle.year }}</h4>
+							<p>
+								{% for grape in bottle.grapes %}
 									{{ grape.name }}{% if not loop.last %}, {% endif %}
 								{% endfor %}
 							</p>
 							<p class="region_card">{{ bottle.region.name }}</p>
+							</div>
 						</div>
-					</div>
-					<p class="card_description" >{{bottle.description}}</p>
+						<p class="card_description">{{ bottle.description }}</p>
 						<div class="card_btn">
 							<div class="btn_bloc">
-							{# {% if app.bottle == cellar.bottle %} #}
-								<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>
-								<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
+								<button class="btn_modify">
+									<a href="{{ path('modify_bottle', {'id': bottle.id}) }}">Modifier</a>
+								</button>
+								<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle', {'id': bottle.id}) }}">
 									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bottle.id)}}">
+									<input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ bottle.id) }}">
 									<button class="btn_suppr">Supprimer</button>
 								</form>
-							{# {% endif %} #}
+							</div>
 						</div>
 					</div>
-				</div>
-			{% endfor %}
-			</div>
-		</article>
-		
+				{% endfor %}
+			{% endif %}
+		</div>		
 	</section>
 
 {% endblock %}

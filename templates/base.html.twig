@@ -34,7 +34,7 @@
 					{% endif %}
 					<li><a class="{% if app.request.attributes.get('_route') == 'home' %} active {% endif %}" href={{path('home')}}>Accueil</a></li>
 					<li><a class="{% if app.request.attributes.get('_route') == 'explorer' %} active {% endif %}" href={{path ('explorer')}}>Catalogue</a></li>
-					<li><a class="{% if app.request.attributes.get('_route') == 'mescaves' %} active {% endif %}" href={{path('mescaves')}}>Mes Caves</a></li>
+					<li><a class="{% if app.request.attributes.get('_route') == 'mescaves_show' %} active {% endif %}" href={{path('mescaves_show')}}>Mes Caves</a></li>
 					{% if not is_granted('ROLE_ADMIN') %}
 						{% else %}
 							<li><a href={{path ("admin")}}>Tableau de Bord</a></li>
@@ -93,7 +93,7 @@
 						<h4>Menu</h4>
 						<a href={{path ("home")}}>Accueil</a>
 						<a href={{path ('explorer')}}>Catalogue</a>
-						<a href={{path ('mescaves')}}>Mes Caves</a>
+						<a href={{path ('mescaves_show')}}>Mes Caves</a>
 					</div>
 					<div class="contact">
 						<h4><a href={{path('contact')}}>Nous contacter</a></h4>

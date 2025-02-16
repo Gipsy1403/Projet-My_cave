@@ -9,6 +9,7 @@
 
 
 {% block body %}
+
 <section>
 	{# <div class="filter">
 		<h2>Filtres</h2>
@@ -20,6 +21,7 @@
 			<button>Filtrer</button>
 		{{form_end(filtreform)}}
     </div> #}
+
 	<article>
 		<div class="container_explorer">
 		{% for bottle in bottles %}
@@ -37,21 +39,18 @@
 				<div class="description_item">
 					<p>{{bottle.description}}</p>
 				</div>
-	
-					{# <button class="btn_add_cellar"><a href={{ path ("bottles_add",{"ids":bottle.id, "id":cellar.id})}}>Ajouter à ma Cave</a></button> #}
-					<button class="btn_add_cellar"><a href={{path ("addbottlecellar",{"id":bottle.id})}}>Ajouter à ma Cave</a></button>
+
+				{# {% if bottle.cellar != null %}
+					{% if bottle.id not in bottle.cellar %}
+						{% if bottle.cellar.id == app.cellar.id %} #}
+					{# <button class="btn_add_cellar"><a href={{path ("addbottlecellar",{"ids":bottle.id, "id":cellar.id})}}>Ajouter à ma Cave</a></button> #}
+						{# {% endif %} #}
+					{# {% endif %} #}
+				{# {% endif %} #}
+					{# <button class="btn_add_cellar"><a href={{path ("addbottlecellar",{"ids":bottle.id})}}>Ajouter à ma Cave</a></button> #}
+				{# ancien bloc mais gardée au cas où #}
+					<button class="btn_add_cellar"><a href="">Ajouter à ma Cave</a></button>
 				
-				
-				{# <div class="btn_bloc">
-				{% if app.user == bottle.user %}
-					<button class="btn_modify"><a href={{path('modify_bottle',{'id':bottle.id})}}>Modifier</a></button>
-					<form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_bottle',{'id': bottle.id})}}">
-						<input type="hidden" name="_method" value="delete">
-						<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bottle.id)}}">
-						<button class="btn_suppr">Supprimer</button>
-					</form>
-				{% endif %}
-				</div> #}
 			</div>	
 		{% endfor %}
 		</div>

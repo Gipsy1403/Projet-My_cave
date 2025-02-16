@@ -41,7 +41,7 @@
 						<div class="cardback">
 						<p>{{ bottle.description|slice(0, 280) ~ (bottle.description|length > 280 ? '...' : '') }}</p>
 						{% if bottle.description|length > 280 %}
-							<a href={{path ("explorer_bottle", {id: bottle.id})}} class="see_more">Voir plus...</a>
+							<a href={{path ("viewbottle", {id: bottle.id})}} class="see_more">Voir plus...</a>
 						{% endif %}
 						</div>
 

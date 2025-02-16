@@ -80,6 +80,7 @@ class BottleType extends AbstractType
 				])
 				]
 			])
+			
         ;
     }
 

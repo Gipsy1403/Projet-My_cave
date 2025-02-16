@@ -22,18 +22,4 @@ final class ExplorerController extends AbstractController{
 
         ]);
     }
-
-//     #[Route('explorer/{id}', name: 'explorer_bottle')]
-//     public function viewBottle(int $id, BottleRepository $repository): Response
-//     {
-//         $bottle = $repository->find($id); // Récupère la bouteille par son ID
-
-//         if (!$bottle) {
-//             throw $this->createNotFoundException('Bouteille non trouvée');
-//         }
-
-//         return $this->render('explorer/viewbottle.html.twig', [
-//             'bottles' => $bottle,
-//         ]);
-//     }
 }
