@@ -49,7 +49,7 @@
 				{# {% endif %} #}
 					{# <button class="btn_add_cellar"><a href={{path ("addbottlecellar",{"ids":bottle.id})}}>Ajouter à ma Cave</a></button> #}
 				{# ancien bloc mais gardée au cas où #}
-					<button class="btn_add_cellar"><a href="">Ajouter à ma Cave</a></button>
+					<a class="btn_add_cellar" href={{path ("addbottlecellar",{"ids":bottle.id})}}>Ajouter à ma Cave</a>
 				
 			</div>	
 		{% endfor %}

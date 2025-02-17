@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Bottle;
 use App\Entity\User;
+use App\Form\AddBottleCellarType;
 use App\Repository\BottleRepository;
 use App\Repository\CellarRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -66,41 +67,52 @@ use Symfony\Component\HttpFoundation\Request;
 
 #[IsGranted('ROLE_USER')]
 final class AddBottleCellarController extends AbstractController{
-//     #[Route('/add/bottle/cellar/{id}', name: 'addbottlecellar')]
-// code modifié
-    #[Route('/add/bottle/cellar/{ids}/{id}', name: 'addbottlecellar')]
-// fin du code modifiée
-
-    public function index(Bottle $bottle,CellarRepository $cellarRepository, EntityManagerInterface $entityManager,BottleRepository $repo,$ids): Response
+	// code modifié
+	//     #[Route('/add/bottle/cellar/{ids}/{id}', name: 'addbottlecellar')]
+	// fin du code modifiée
+	
+	#[Route('/add/bottle/cellar/{ids}', name: 'addbottlecellar')]
+    public function index(Bottle $bottle): Response
     {
+	    dd("test");
 	$user=$this->getUser();
 	if (!$user) {
-		throw $this->createAccessDeniedException("Veuiller vous connecter pour ajouter un vin à votre cave.");
+		throw $this->createAccessDeniedException("Veuillez vous connecter pour ajouter un vin à votre cave.");
 	}
-	// ligne rajoutée /addcellarcontroller pour faire des tests
-	$bottle  = $repo->find($ids);
-// fin de la ligne test
-	$cellars=$cellarRepository->findBy(["user"=>$user]);
-	if (!$cellars) {
-		throw $this->createAccessDeniedException("Veuiller choisir votre cave.");
 	
+	$bottle= $repo->find($ids);
+	
+	$cellaruser=$cellarRepository->findBy(["user"=>$user]);
+
+	if (!$cellaruser) {
+		throw $this->createAccessDeniedException("Veuillez choisir votre cave.");
 	}
-	foreach($cellars as $cellar){
+	$form = $this->createForm(AddBottleCellarType::class, null, [
+		'cellars' => $cellaruser, // Passer les caves de l'utilisateur au formulaire
+	 ]);
+  
+	 $form->handleRequest($request);
+  
+	 if ($form->isSubmitted() && $form->isValid()) {
+		// Récupérer la cave sélectionnée
+		$cellar = $form->get('cellar')->getData();
+	// foreach($cellars as $cellar){
 	if (!$cellar->getBottles()->contains($bottle)) {
 		$cellar->addBottle($bottle);
+
 		$entityManager->persist($cellar);
 		$entityManager->flush();
 
 		$this->addFlash('success', 'La bouteille de vin a été ajoutée à votre cave.');
 	 }
-	}
+	// }
 		return $this->redirectToRoute('mescaves_show');
-
-// cette seconde partie n'était pas utilis
 
         return $this->render('explorer/explorer.html.twig', [
             'bottles' => $bottle,
-		  'cellars'=> $cellar,
+		//   'cellars'=> $cellar,
+		  "form"=>$form->createView(),
         ]);
     }
+}
 }

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création Cave{% endblock %}
+
+{% block body %}
+	<h1>Choisissez une cave pour ajouter la bouteille "{{ bottle.name }}"</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.cellar) }}
+        <button class="btn btn-primary" type="submit">Ajouter la bouteille</button>
+    {{ form_end(form) }}
+{% endblock %}

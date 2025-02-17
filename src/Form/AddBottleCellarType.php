@@ -15,23 +15,21 @@ class AddBottleCellarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-//             ->add('bottles', EntityType::class, [
-//                 'class' => Bottle::class,
-// 'choice_label' => 'id',
-// 'multiple' => true,
-//             ])
-//             ->add('user', EntityType::class, [
-//                 'class' => User::class,
-// 'choice_label' => 'id',
-//             ])
+	   ->add('cellar', EntityType::class, [
+		'class' => Cellar::class,
+		'choices' => $options['cellars'], // Liste des caves de l'utilisateur
+		'choice_label' => 'name', // Affiche le nom de la cave
+		'placeholder' => 'Choisissez votre cave',
+	 ]);
+//        
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Cellar::class,
+          //   'data_class' => Cellar::class,
+		"cellar"=>[],
         ]);
     }
 }
