@@ -36,9 +36,10 @@ class BottleType extends AbstractType
 			  ->add('grapes', EntityType::class, [
 			     'class' => Grapes::class,
 				'choice_label' => 'name',
-				"label"=>"Cépage(s)",
+				"label"=> '<span>Cépage(s)</span><span style="font-size: 12px; font-style: italic;">Pour sélectionner plusieurs cépages, faites CTRL+clic gauche de la souris</span>',
 				'multiple' => true,
 				"expanded" => false,
+				"label_html"=>true,
 			  ])
 			//   ->add('cellar', EntityType::class, [
 			//      'class' => Cellar::class,

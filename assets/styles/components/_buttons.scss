@@ -100,3 +100,19 @@ button{
 #contact_submit{
 	margin: auto;
 }
+
+ // bouton retour vers le haut de page
+ .btn_scroll{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	right: 30px;
+	bottom: 100px;
+	cursor: pointer;
+	.fa-circle-chevron-up{
+	    color: v.$third_color;
+	    font-size: 2em;
+	    // width: 50px;
+	}
+ }
