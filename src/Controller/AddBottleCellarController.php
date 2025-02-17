@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Bottle;
 use App\Entity\User;
 use App\Form\AddBottleCellarType;
+use App\Form\BottleType;
 use App\Repository\BottleRepository;
 use App\Repository\CellarRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -69,37 +70,34 @@ use Symfony\Component\HttpFoundation\Request;
 final class AddBottleCellarController extends AbstractController{
 	// code modifié
 	//     #[Route('/add/bottle/cellar/{ids}/{id}', name: 'addbottlecellar')]
-	// fin du code modifiée
+	// fin du code modifié
 	
-	#[Route('/add/bottle/cellar/{ids}', name: 'addbottlecellar')]
-    public function index(Bottle $bottle): Response
+	#[Route('/add/bottle/cellar/{id}', name: 'addbottlecellar')]
+    public function index(Bottle $bottle,BottleRepository $repo, CellarRepository $cellarRepository,Request $request, $id, EntityManagerInterface $entityManager): Response
     {
-	    dd("test");
-	$user=$this->getUser();
-	if (!$user) {
-		throw $this->createAccessDeniedException("Veuillez vous connecter pour ajouter un vin à votre cave.");
-	}
-	
-	$bottle= $repo->find($ids);
-	
-	$cellaruser=$cellarRepository->findBy(["user"=>$user]);
 
-	if (!$cellaruser) {
-		throw $this->createAccessDeniedException("Veuillez choisir votre cave.");
-	}
-	$form = $this->createForm(AddBottleCellarType::class, null, [
-		'cellars' => $cellaruser, // Passer les caves de l'utilisateur au formulaire
-	 ]);
-  
-	 $form->handleRequest($request);
-  
-	 if ($form->isSubmitted() && $form->isValid()) {
-		// Récupérer la cave sélectionnée
-		$cellar = $form->get('cellar')->getData();
-	// foreach($cellars as $cellar){
-	if (!$cellar->getBottles()->contains($bottle)) {
-		$cellar->addBottle($bottle);
-
+	    $user=$this->getUser();
+	    if (!$user) {
+		    throw $this->createAccessDeniedException("Veuillez vous connecter pour ajouter un vin à votre cave.");
+		}
+		$bottle= $repo->find($id);
+		
+		$cellaruser=$cellarRepository->findBy(["user"=>$user]);
+		
+		if (!$cellaruser) {
+			throw $this->createAccessDeniedException("Veuillez choisir votre cave.");
+		}
+		$form = $this->createForm(AddBottleCellarType::class,$cellaruser);
+		$form->handleRequest($request);
+		// dd($cellaruser);
+		if ($form->isSubmitted() && $form->isValid()) {
+			// Récupérer la cave sélectionnée
+			$cellar = $form->get('cellar')->getData();
+			// foreach($cellars as $cellar){
+				if (!$cellar->getBottles()->contains($bottle)) {
+					$cellar->addBottle($bottle);
+					
+					// dd($cellaruser);
 		$entityManager->persist($cellar);
 		$entityManager->flush();
 
@@ -107,12 +105,12 @@ final class AddBottleCellarController extends AbstractController{
 	 }
 	// }
 		return $this->redirectToRoute('mescaves_show');
+	}
 
-        return $this->render('explorer/explorer.html.twig', [
+        return $this->render('mes_caves/addbottlecellar.html.twig', [
             'bottles' => $bottle,
-		//   'cellars'=> $cellar,
+		//   'cellaruser' => $cellaruser,
 		  "form"=>$form->createView(),
         ]);
     }
-}
 }
