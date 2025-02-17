@@ -40,17 +40,7 @@ final class AddCellarController extends AbstractController{
 	    ]);
     }
     
-	//    #[Route('/cellar/delete/{id}', name: 'delete_cellar')]
-	//    public function remove(Cellar $cellar, Request $request, EntityManagerInterface $entityManager): Response
-	//    {
-		
-	// 	  if($this->isCsrfTokenValid('SUP'.$cellar->getId(),$request->get('_token'))){
-	// 		 $entityManager->remove($cellar);
-	// 		 $entityManager->flush();
-	// 		 $this->addFlash('success','La suppression à été effectuée');
-	// 		 return $this->redirectToRoute('mescaves_show');
-	// 	  }
-	//    }
+
 	#[Route('/cellar/delete/{id}', name: 'delete_cellar', methods: ['POST'])]
 public function remove(Cellar $cellar, Request $request, EntityManagerInterface $entityManager): Response
 {

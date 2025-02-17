@@ -82,17 +82,6 @@ public function index(Bottle $bottle = null, Request $request, EntityManagerInte
 }
 
 
-//     #[Route('/bottle/delete/{id}', name: 'delete_bottle')]
-//     public function remove(Bottle $bottle, Request $request, EntityManagerInterface $entityManager): Response
-//     {
-      
-//         if($this->isCsrfTokenValid('SUP'.$bottle->getId(),$request->get('_token'))){
-//             $entityManager->remove($bottle);
-//             $entityManager->flush();
-//             $this->addFlash('success','La suppression à été effectuée');
-//             return $this->redirectToRoute('mescaves_show');
-//         }
-//     }
 #[Route('/bottle/delete/{id}', name: 'delete_bottle')]
 public function remove(Bottle $bottle, Request $request, EntityManagerInterface $entityManager): Response
 {

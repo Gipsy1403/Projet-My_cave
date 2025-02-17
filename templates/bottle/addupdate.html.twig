@@ -4,7 +4,7 @@
 
 {% block body %}
 	<h1>{{ isModification ? "Modifier un vin": "Créer un vin"}}</h1>
-	{{form_start(bottleform)}}
+		{{form_start(bottleform)}}
 			<div class="selectedcellar">
 				<label for="selectedCellar">Sélectionnez une de vos caves </label>
 				<select name="selectedCellar" id="selectedCellar" required>
@@ -14,7 +14,12 @@
 				</select>
 			</div>
 		{{form_widget(bottleform)}}
-		<button class="btn_form">{{ isModification ? "Modifier": "Créer"}}</button>
-	{{form_end(bottleform)}}
+			<button class="btn_form">{{ isModification ? "Modifier": "Créer"}}</button>
+		{{form_end(bottleform)}}
+			<div class="missing">
+				<p>Il vous manque des 🏴régions, 🌍Pays ou 🍇Cépages ?</p>
+				<a href={{path('contact')}}>Contactez-nous !</a>
+			</div>
 	
+
 {% endblock %}

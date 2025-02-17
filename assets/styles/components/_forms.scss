@@ -44,7 +44,7 @@ h1{
 	}
 
 }
-// ajout de la selection de la cave pour créer un vin
+// ajout de la selection de la cave pour créer un vin, du choix du nom de la cave pour ajouter un vin du catalogue
 .selectedcellar, .selectcellar, .catalog_form{
 	max-width: 500px;
 	margin: auto;
@@ -107,5 +107,7 @@ h1{
 	}
 	
 }
-
+#contact{
+	margin-bottom: 0;
+}
 

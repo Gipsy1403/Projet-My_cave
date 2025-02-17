@@ -42,7 +42,7 @@
 }
 
 
-// bouton modifier des cartes**************************
+// bouton modifier les cartes de vins**************************
 .btn_bloc{
 	display: flex;
 	justify-content: space-around;
@@ -96,3 +96,7 @@ button{
 	}
 }
 
+// Bouton du formulaire Contactez-nous
+#contact_submit{
+	margin: auto;
+}

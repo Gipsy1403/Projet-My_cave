@@ -93,7 +93,7 @@ final class AddBottleCellarController extends AbstractController{
 		if ($form->isSubmitted() && $form->isValid()) {
 			// Récupérer la cave sélectionnée
 			$cellar = $form->get('cellar')->getData();
-			// foreach($cellars as $cellar){
+			
 				if (!$cellar->getBottles()->contains($bottle)) {
 					$cellar->addBottle($bottle);
 					

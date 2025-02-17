@@ -173,4 +173,25 @@
 	 background-color:v.$third-color;
  }
 
+//  ajout contactez nous s'il manque région, pays ou cépages dans la création d'un vin
+.missing{
+	text-align: center;
+	// margin-top: 2rem;
+	// padding-bottom : 2rem;
+	background-color: rgba(255, 255, 255, 0.672);
+	max-width: 500px;
+	margin: auto;
+	color: v.$first-color;
+	border-radius: 20px;
+	a{
+		color: v.$first-color;
+		font-size: 1.2em;
+		font-weight: bold;
+		&:hover{
+			color: v.$snd-color;
+		}
+
+	}
+
+}
 
