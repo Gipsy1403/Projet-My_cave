@@ -6,7 +6,7 @@
 	@include m.flex;
 	width: 100%;
 	color: v.$first-color;
-	padding-top: 3rem;
+	padding-top: 1.5rem;
 // description des règles pour guider l'utilisateur
 	.rules{
 		line-height: 1.5;
@@ -51,7 +51,18 @@
 	font-size: 1.2em;
 	border-radius: 10px;
 }
-
+.catalog{
+	text-align: center;
+	color:v.$snd-color;
+	a{
+		color: white;
+	}
+	button{
+		margin:auto;
+		padding: 5px 20px;
+		margin-top: 2rem;
+	}
+}
 
 // Section gestion de mes caves (ajout, modif, suppr)**********
 #mescaves{

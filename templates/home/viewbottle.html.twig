@@ -13,8 +13,8 @@
 	<article>
 	<h1>Descriptif du vin</h1>
 		
-		{% for bottle in bottles %}
 			<div class="card_description">
+		{% for bottle in bottles %}
 				<img class="card_wine" src={{asset('images/' ~ bottle.imageName )}} alt="Photographie d'une bouteille de vin">
 				<div class="card_explorer">
 					<h3>{{bottle.name}}</h3>
@@ -27,9 +27,9 @@
 				</div>
 				<div class="description_item">
 					<p>{{bottle.description}}</p>
+		{% endfor %}
 				</div>
 			</div>	
-		{% endfor %}
 		
 	</article>
 

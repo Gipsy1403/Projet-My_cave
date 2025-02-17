@@ -45,7 +45,7 @@ h1{
 
 }
 // ajout de la selection de la cave pour créer un vin
-.selectedcellar, .selectcellar{
+.selectedcellar, .selectcellar, .catalog_form{
 	max-width: 500px;
 	margin: auto;
 	padding: 20px;
@@ -76,6 +76,9 @@ h1{
 }
 .selectcellar{
 	margin-top: 3rem;
+}
+.catalog_form{
+	margin-bottom: 0;
 }
 // Formulaires ajout cave, se connecter et s'inscrire, gestion du mot de passe, contact ******************
 #cellar,#login,#user,#reset_password_request_form,#contact{

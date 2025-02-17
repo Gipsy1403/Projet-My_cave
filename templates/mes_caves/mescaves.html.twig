@@ -32,9 +32,13 @@
 				{% else %}
 				<p><em>"Veuillez vous <a href={{ path ('app_register')}}><strong>inscrire</strong></a> ou vous <a href={{ path ('app_login')}}><strong>connecter</strong></a>, pour créer une cave ou ajouter un vin. Merci !"</em></p>
 			{% endif %}
-
 		</div>
 	</section>
+		
+		<div class="catalog">
+			<h3>Vous souhaitez ajouter un vin de notre catalogue ?</h3>
+			<button><a href={{ path ('explorer')}}>C'est parti !</a></button>
+		</div>
 	
 {# affiche les caves créées #}
 	<section id="mescaves">

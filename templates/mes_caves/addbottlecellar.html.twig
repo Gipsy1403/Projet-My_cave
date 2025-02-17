@@ -3,12 +3,14 @@
 {% block title %}Création Cave{% endblock %}
 
 {% block body %}
-{% for bottle in bottles %}
-	<h1>Choisissez une cave pour ajouter la bouteille "{{ bottle.name }}"</h1>
-{% endfor %}
+{# {% for bottle in bottles %} #}
+	<h1>Choisissez une cave de vos caves </h1>
+{# {% endfor %} #}
     {{ form_start(form) }}
-        {{ form_row(form.cellar) }}
-        <button class="btn btn-primary" type="submit">Ajouter le vin à ma cave</button>
+        <div class="catalog_form">
+		{{ form_row(form.cellar) }}
+		<button class="btn_form" type="submit">Ajouter le vin à ma cave</button>
+	   </div>
     {{ form_end(form) }}
 
 {% endblock %}
