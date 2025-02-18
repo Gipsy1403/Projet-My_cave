@@ -10,33 +10,11 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class MesCavesController extends AbstractController{
-//     #[Route('/mes/caves', name: 'mescaves')]
-//     public function index(BottleRepository $repository,CellarRepository $cellarRepository): Response
-//     {
-// 	// récupère l'utilisateur connecté
-// 	$user = $this->getUser();
-// 	// vérifie que l'utilisateur soit bien connecté
-// 	if (!$user) {
-// 	    throw $this->createAccessDeniedException('Veuillez vous authentifier en vous connectant.');
-// 	}
-// 	// recherche une cave de l'utilisateur dans la BdD
-// 	$cellars = $cellarRepository->findBy(['user' => $user]);
-// 	// récupère les bouteilles associées à la cave de l'utilisateur sinon créé un tableau vide
-// 	$bottles=!empty($cellars)?$cellars[0]->getBottles():[];
-		
 
-//         return $this->render('mes_caves/mescaves.html.twig', [
-// 		// liste les bouteilles et les caves de l'utilisateur
-//             'bottles' => $bottles,
-//             'cellars' => $cellars,
-		  
-//         ]);
 
 #[Route('/mes/caves/{cellarId?}', name: 'mescaves_show')]
-public function show(
-    Request $request,
-    CellarRepository $cellarRepository
-): Response {
+public function show( Request $request, CellarRepository $cellarRepository): Response 
+{
     // Récupère l'utilisateur connecté
     $user = $this->getUser();
     	// vérifie que l'utilisateur soit bien connecté

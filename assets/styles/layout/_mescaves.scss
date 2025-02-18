@@ -22,10 +22,11 @@
 		}
 // ajout d'une cave
 		#add_cellar{
-			display: flex;
-			justify-content: center;
-			margin: 1.5rem 15rem;
-			
+			display: inline;
+			transform: translateX(-50%);
+			margin-bottom: 1rem;
+			margin-left: 40%;
+			margin-top: 1rem;
 		}
 	}
 // ajout d'un vin
