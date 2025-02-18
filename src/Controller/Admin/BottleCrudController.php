@@ -27,7 +27,7 @@ class BottleCrudController extends AbstractCrudController
         return [
 		TextField::new('name', 'Nom du Domaine'),
 		AssociationField::new('region','Région')
-		->setFormTypeOptions([  	'by_reference' => false,
+		->setFormTypeOptions([  
 							'choice_label' => 'name',
 						]),
 		AssociationField::new('grapes','Cépages')

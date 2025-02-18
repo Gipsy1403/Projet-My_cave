@@ -14,29 +14,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted('ROLE_USER')]
 final class BottleController extends AbstractController{
-// 	#[Route('/bottle', name: 'add_bottle')]
-// 	#[Route('/bottle/{id}', name: 'modify_bottle')]
-//     public function index(Bottle $bottle = null, Request $request, EntityManagerInterface $entityManager): Response
-//     {
-// 		if(!$bottle){
-// 			$bottle=new Bottle;
-// 		}
-// 	// 	// dd("lulu");
-// 		$form = $this->createForm(BottleType::class,$bottle);
-// 		$form->handleRequest($request);
-
-// 	if($form->isSubmitted() && $form->isValid()){
-		
-// 		$entityManager->persist($bottle);
-// 		$entityManager->flush();
-// 		return $this->redirectToRoute('mescaves_show');
-// 	}
-	
-// 	return $this->render('bottle/addupdate.html.twig', [
-// 		'bottleform' => $form->createView(), 
-// 		'isModification' => $bottle->getId() !== null 
-// 	]);
-// }
 #[Route('/bottle', name: 'add_bottle')]
 #[Route('/bottle/{id}', name: 'modify_bottle')]
 public function index(Bottle $bottle = null, Request $request, EntityManagerInterface $entityManager, CellarRepository $cellarRepository): Response
