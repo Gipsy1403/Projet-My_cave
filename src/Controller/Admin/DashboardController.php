@@ -64,7 +64,5 @@ class DashboardController extends AbstractDashboardController
 	    yield MenuItem::linkToCrud('Pays', 'fa fa-earth-europe', Country::class);
 	    yield MenuItem::section('**********'); // Séparateur
 	    yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
-	    
-
     }
 }

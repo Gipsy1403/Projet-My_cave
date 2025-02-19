@@ -31,14 +31,15 @@ public function index(Bottle $bottle = null, Request $request, EntityManagerInte
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-        // Récupère la cave sélectionnée par l'utilisateur (ex: depuis un champ dans le formulaire)
+        // Récupère la cave sélectionnée par l'utilisateur depuis le champ du formulaire)
         $selectedCellarId = $request->request->get('selectedCellar');
-
+	// Si l'ID de la cave sélectionnée correspond à la cave de l'utilisateur, alors la bouteille est ajoutée
         if ($selectedCellarId) {
             $cellar = $cellarRepository->find($selectedCellarId);
             if ($cellar) {
                 $cellar->addBottle($bottle);
-                $entityManager->persist($cellar); // Met à jour la cave
+			// Met à jour la cave
+                $entityManager->persist($cellar); 
             }
         }
 

@@ -29,7 +29,7 @@
 // Barre de navigation
 	.fa-bars{
 		display: block;
-		margin-left: 2rem;
+		margin-left: 1rem;
 	}
 	nav{
 		ul{
@@ -40,8 +40,8 @@
 	.menu_dropdown:hover ul{
 		display: block;
 		position: absolute;
-		top: 3rem;
-		left: 1rem;
+		top: 4rem;
+		left: 2rem;
 		background-color: white;
 	}
 	ul li{
@@ -135,6 +135,13 @@
 		font-size: 1rem;
 	}
 	
+}
+@media screen and (max-width:630px) {
+	.container_explorer{
+		.description_item{
+			width:100%;
+		}
+	}
 }
 @media screen and (max-width:470px) {
 // Bannière de l'accueil

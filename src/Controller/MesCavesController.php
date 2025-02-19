@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class MesCavesController extends AbstractController{
 
-
 #[Route('/mes/caves/{cellarId?}', name: 'mescaves_show')]
 public function show( Request $request, CellarRepository $cellarRepository): Response 
 {
